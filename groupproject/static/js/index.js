@@ -1,0 +1,6 @@
+const tl = gsap.timeline({defaults: {duration: 1}})
+tl.fromTo('.text', {y:-20},{y:0, duration:1})
+tl.fromTo('.text', {opacity:0},{opacity:1, duration:3.5},'<')
+tl.fromTo('.load', {opacity:0},{opacity:1,ease:"slow(0.7, 0.7, false)", duration:2}, '<40%')
+tl.to('.load', {opacity:0, duration:2})
+tl.to('.text', {yPercent:-550, ease:"power3.out",duration:2})
