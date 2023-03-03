@@ -11,17 +11,17 @@ class Category(models.Model):
 
 
 
-class product(modles.Modle):
-	prodID = models.IntegerField(default = 20, unique = True)
-	prodName = models.CharField(max_length = 100)
-	Brand = models.CharField(max_length = 100)
-	Condition = models.CharField(max_length = 100)
-	Price = models.IntegerField()
-	Description = models.CharField(max_length = 10000)
-	print("sadoifhsdofgisdhg")
+# class product(modles.Modle):
+# 	prodID = models.IntegerField(default = 20, unique = True)
+# 	prodName = models.CharField(max_length = 100)
+# 	Brand = models.CharField(max_length = 100)
+# 	Condition = models.CharField(max_length = 100)
+# 	Price = models.IntegerField()
+# 	Description = models.CharField(max_length = 10000)
+# 	print("sadoifhsdofgisdhg")
 
 
-	def __str__(self):
-		return self.prodID
+# 	def __str__(self):
+# 		return self.prodID
 
 
