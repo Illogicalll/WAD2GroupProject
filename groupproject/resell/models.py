@@ -18,6 +18,7 @@ class product(modles.Modle):
 	Condition = models.CharField(max_length = 100)
 	Price = models.IntegerField()
 	Description = models.CharField(max_length = 10000)
+	print("sadoifhsdofgisdhg")
 
 
 	def __str__(self):
