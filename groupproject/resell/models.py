@@ -4,23 +4,24 @@ from django.db import models
 
 class Category(models.Model):
 	cateID = models.IntegerField(default = 20, unique = True)
-	cateName = modles.CharField(max_length = 128)
+	cateName = models.CharField(max_length = 128)
 
 	def __str__(self):
 		return self.cateID
 
 
 
-class product(modles.Modle):
-	prodID = modles.IntegerField(default = 20, unique = True)
-	prodName = modles.CharField(max_length = 100)
-	Brand = modles.CharField(max_length = 100)
-	Condition = modles.CharField(max_length = 100)
-	Price = modles.IntegerField()
-	Description = modles.CharField(max_length = 10000)
+class product(models.Modle):
+	prodID = models.IntegerField(default = 20, unique = True)
+	prodName = models.CharField(max_length = 100)
+	Brand = models.CharField(max_length = 100)
+	Condition = models.CharField(max_length = 100)
+	Price = models.IntegerField()
+	Description = models.CharField(max_length = 10000)
+	print("sadoifhsdofgisdhg")
 
 
 	def __str__(self):
-		retrun self.prodID
+		return self.prodID
 
 
