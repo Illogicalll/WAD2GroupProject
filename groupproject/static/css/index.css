@@ -33,3 +33,60 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+.options {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+#buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 630px;
+    opacity: 0;
+}
+
+.button {
+    position: relative;
+    background-color: black;
+    height: 260px;
+    width: 300px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button::before {
+    position: absolute;
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    opacity: 0.1;
+    transition: opacity 500ms;
+    border: 1px solid white;
+}
+
+.button:hover::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
+    opacity: 1;
+    border: 1px solid greenyellow;
+}
+
+.cardtext {
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 25px;
+    line-height: 210px;
+    text-align: center;
+}
