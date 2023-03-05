@@ -43,6 +43,7 @@ PRODUCT_CONDITION = (
 	("Open Not Used", "Open Not Used"),
 )
 
+<<<<<<< HEAD
 class Product(models.Model):
 	prodID = models.PositiveIntegerField(unique = True)
 	prodName = models.CharField(max_length = 100)
@@ -61,6 +62,20 @@ class Product(models.Model):
 	
 	
 	
+=======
+# class product(modles.Modle):
+# 	prodID = models.IntegerField(default = 20, unique = True)
+# 	prodName = models.CharField(max_length = 100)
+# 	Brand = models.CharField(max_length = 100)
+# 	Condition = models.CharField(max_length = 100)
+# 	Price = models.IntegerField()
+# 	Description = models.CharField(max_length = 10000)
+# 	print("sadoifhsdofgisdhg")
+
+
+# 	def __str__(self):
+# 		return self.prodID
+>>>>>>> 8fa8950d3b9578d5c29ce0adfa9a442fb303171b
 
 class Wishlist(models.Model):
 	user = models.ForeignKey(

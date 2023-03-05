@@ -5,17 +5,35 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re:Sellasdofuhsg</title>
+        <title>Re:Sell</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{% static 'css/index.css' %}" rel="stylesheet">
     </head>
 
     <body style="background-color:black">
-        <div class="text">
-            <h1 style="color:white">Re:Sell</h1>
+        <div class="navbar"></div>
+        <div class="options">
+            <div id="buttons">
+                <div class="button" role="button" id="buying">
+                    <div class="cardtext">
+                        <p>Buying</p>
+                    </div>
+                </div>
+                <div class="button" role="button" id="selling">
+                    <div class="cardtext">
+                        <p>Selling</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="load"></div>
+        <div class="loadanim">
+            <div id="text">
+                <h1 style="color:white">Re:Sell</h1>
+            </div>
+            <div id="spinner"></div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="{% static 'js/index.js' %}" async defer></script>
     </body>
