@@ -21,6 +21,7 @@
 }
 
 #spinner {
+    opacity: 0;
     border: 2px solid #000;
     border-top: 2px solid #fff;
     border-radius: 50%;
@@ -63,20 +64,33 @@
 
 #buying {
     pointer-events: none;
+    height: 260px;
+    width: 300px;
 }
 
 #selling {
     pointer-events: none;
+    height: 260px;
+    width: 300px;
+}
+
+#about {
+    pointer-events: none;
+    height: 60px;
+    width: 150px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 10%;
 }
 
 .button {
     position: relative;
     background-color: black;
-    height: 260px;
-    width: 300px;
     border-radius: 10px;
     cursor: pointer;
 }
+
 
 .button::before {
     position: absolute;
@@ -98,10 +112,17 @@
     border: 1px solid greenyellow;
 }
 
-.cardtext {
+.buttontext {
     color: white;
     font-family: 'Ubuntu', sans-serif;
     font-size: 25px;
     line-height: 210px;
+    text-align: center;
+}
+
+.abouttext {
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
     text-align: center;
 }

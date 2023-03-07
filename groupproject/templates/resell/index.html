@@ -5,9 +5,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re:Sell</title>
+        <title>Home</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
         <link href="{% static 'css/index.css' %}" rel="stylesheet">
     </head>
 
@@ -16,17 +17,22 @@
         <div id="bg">
             <div class="options">
                 <div id="buttons">
-                    <div class="button" role="button" id="buying">
-                        <div class="cardtext">
+                    <div class="button" role="button" id="buying" data-url="">
+                        <div class="buttontext">
                             <p>Buying</p>
                         </div>
                     </div>
-                    <div class="button" role="button" id="selling">
-                        <div class="cardtext">
+                    <div class="button" role="button" id="selling" data-url="">
+                        <div class="buttontext">
                             <p>Selling</p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="button" role="button" id="about" data-url="{% url 'about' %}">
+                        <div class="abouttext">
+                            <p>About</p>
+                        </div>
             </div>
         </div>
         <div class="loadanim">
