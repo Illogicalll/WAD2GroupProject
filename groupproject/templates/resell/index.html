@@ -13,16 +13,18 @@
 
     <body style="background-color:black">
         <div class="navbar"></div>
-        <div class="options">
-            <div id="buttons">
-                <div class="button" role="button" id="buying">
-                    <div class="cardtext">
-                        <p>Buying</p>
+        <div id="bg">
+            <div class="options">
+                <div id="buttons">
+                    <div class="button" role="button" id="buying">
+                        <div class="cardtext">
+                            <p>Buying</p>
+                        </div>
                     </div>
-                </div>
-                <div class="button" role="button" id="selling">
-                    <div class="cardtext">
-                        <p>Selling</p>
+                    <div class="button" role="button" id="selling">
+                        <div class="cardtext">
+                            <p>Selling</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -33,6 +35,8 @@
             </div>
             <div id="spinner"></div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="{% static 'js/indexbg.js' %}"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="{% static 'js/index.js' %}" async defer></script>
