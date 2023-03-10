@@ -174,7 +174,7 @@
             }
         }
         onInit() {
-            var t = this.camera = new l.PerspectiveCamera(10, this.width / this.height, .1, 5e3);
+            var t = this.camera = new l.PerspectiveCamera(50, this.width / this.height, .1, 5e3);
             t.position.x = 0, t.position.y = 250, t.position.z = 500, t.tx = 0, t.ty = 50, t.tz = 150, t.lookAt(0, 0, 0), this.scene.add(t);
             var e, s, o, n, r, h, a, c = this.starsGeometry = new l.BufferGeometry,
                 d = this.options.spacing;
