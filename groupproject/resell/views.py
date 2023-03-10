@@ -9,23 +9,35 @@ def about(request):
     return render(request, 'resell/about.html')
 
 
+@login_required
 def sell(request):
     return render(request, 'resell/sell.html')
 
 def buy(request):
-    return render(request, 'resell/buy.html')
+    return render(request, 'resell/listings.html')
 
 def login(request):
     return render(request, 'resell/login.html')
 
-def products(request):
-    return render(request,'resell/products.html')
+def signup(request):
+    return render(request,'resell/signup.html')
 
-
-""" 
-def product(request):
-    return render(request, 'resell/{product_id}.html')
+def item(request):
+    return render(request, 'resell/item.html')
     
-def user(request):
-    return render(request, 'resell/{user_id}.html)
-"""
+def profile(request):
+    return render(request, 'resell/profile.html')
+
+@login_required
+def editprofile(request):
+    return render(request,'resell/editprofile.html')
+
+@login_required
+def checkout(request):
+    return render(request,'resell/checkout.html')
+
+
+
+
+
+
