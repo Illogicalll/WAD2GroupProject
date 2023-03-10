@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from resell.forms import SignUpForm
+from resell.models import Product
 
 # Create your views here.
 
@@ -39,8 +41,14 @@ def buy(request):
 def login(request):
     return render(request, 'resell/login.html')
 
-def item(request):
-    return render(request, 'resell/item.html')
+def item(request,product_id):
+
+    try:
+        item = Product.objects.get(prodID=product_id)
+    except Product.DoesNotExist:
+        item = None
+
+    return render(request, 'resell/item.html', {'item':item})
     
 def profile(request):
     return render(request, 'resell/profile.html')

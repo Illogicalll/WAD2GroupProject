@@ -25,5 +25,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('success/', views.signupsuccess, name='success'),
     path('admin/', admin.site.urls),
+    path('item/<int:product_id>',views.item, name='item'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
