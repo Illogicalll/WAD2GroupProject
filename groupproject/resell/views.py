@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from resell.forms import SignUpForm
-from resell.models import Product
+from resell.models import Product,User
 
 # Create your views here.
 
@@ -50,8 +50,14 @@ def item(request,product_id):
 
     return render(request, 'resell/item.html', {'item':item})
     
-def profile(request):
-    return render(request, 'resell/profile.html')
+def profile(request,profile_id):
+
+    try:
+        thisUser = User.objects.get(UserID=profile_id)
+    except User.DoesNotExist:
+        thisUser= None
+    
+    return render(request, 'resell/profile.html',{'user':thisUser})
 
 @login_required
 def editprofile(request):
