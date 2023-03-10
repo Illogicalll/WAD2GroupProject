@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>User Profile: {{ user.UserID }}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
+    </head>
+
+    <body style="background-color:black">
+        <div style="color:white">
+        {% if user %}
+            <h1>{{ user.FirstName }} {{ user.LastName }}</h1>
+            <p>This is a user profile.</p>
+            <h3>Joined on:</h3>
+            <p>{{ user.joinedOn }}</p>
+        {% else %}
+            <p>This user does not exist</p>
+        {% endif %}
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="{% static 'js/indexbg.js' %}"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{% static 'js/index.js' %}" async defer></script>
+    </body>
+
+</html>
