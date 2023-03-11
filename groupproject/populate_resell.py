@@ -1,9 +1,11 @@
 
 import os
-os.environ.setdefault('DJANGO_SEETINGS_MODULE','groupproject.settings')
+import random
+os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                      'groupproject.settings')
 
 import django
-django.setup
+django.setup()
 
 from resell.models import User, Authentication_System, Category, Product, Wishlist, Order
 from datetime import datetime, timedelta
@@ -13,7 +15,7 @@ from django.utils.text import slugify
 def populate():
     categories = [
     {"name": "Electronics", "slug": "electronics"},
-    {"name": "Cloth and Fashion", "slug": "Cloth-and-Fashion"},
+    {"name": "Fashion", "slug": "Fashion"},
     {"name": "Books", "slug": "books"},
     {"name": "Home & Garden", "slug": "home-and-garden"},
     {"name": "Toys & Games", "slug": "toys-and-games"}
@@ -57,20 +59,26 @@ def populate():
 
 users = []
 for i in range(1,11):
-    user = User.objects.create_user(
-        username=f"user{i}",
-        email=f"951975031@qq.com",
-        password="123456789"
+     username = f"user{i}"
+     if not User.objects.filter(username=username).exists():
+         user = User.objects.create_user(
+             username=f"user{i}",
+             email=f"951975031@qq.com",
+             password="123456789"
     )
-    users.append(user)
+         users.append(user)
 
 
 for user in users:
     for product in Product.objects.all()[:5]:
-        Wishlist.objects.create(
+        wishlist=Wishlist(
             user=user,
             Product=product
         )
+        wishlist.save()
 
 for user in users:
     wishlist = Wishlist.objects.filter(user=user).first()
+
+if __name__ == '__main__':
+    populate()
