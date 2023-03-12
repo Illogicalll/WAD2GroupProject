@@ -174,8 +174,8 @@
             }
         }
         onInit() {
-            var t = this.camera = new l.PerspectiveCamera(50, this.width / this.height, .1, 5e3);
-            t.position.x = 0, t.position.y = 250, t.position.z = 500, t.tx = 0, t.ty = 50, t.tz = 150, t.lookAt(0, 0, 0), this.scene.add(t);
+            var t = this.camera = new l.PerspectiveCamera(40, this.width / this.height, .1, 5e3);
+            t.position.x = 0, t.position.y = 500, t.position.z = 100, t.tx = 0, t.ty = 20, t.tz = 20, t.lookAt(0, 0, 0), this.scene.add(t);
             var e, s, o, n, r, h, a, c = this.starsGeometry = new l.BufferGeometry,
                 d = this.options.spacing;
             const p = [];
@@ -215,7 +215,7 @@
             }
             t.attributes.position.setUsage(l.DynamicDrawUsage), t.computeVertexNormals(), t.attributes.position.needsUpdate = !0;
             const i = this.camera,
-                s = .003;
+                s = .00003;
             i.position.x += (i.tx - i.position.x) * s, i.position.y += (i.ty - i.position.y) * s, i.position.z += (i.tz - i.position.z) * s, i.lookAt(0, 0, 0), this.linesMesh && (this.linesMesh.rotation.z += .002, this.linesMesh.rotation.x += 8e-4, this.linesMesh.rotation.y += 5e-4)
         }
         onRestart() {
