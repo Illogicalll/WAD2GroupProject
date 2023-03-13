@@ -20,6 +20,9 @@
     text-align: center;
     color: white;
     font-size: 1.5em;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 #desc {
@@ -28,6 +31,11 @@
     color: white;
     line-height: 5px;
     font-size: 1.2em;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .button {

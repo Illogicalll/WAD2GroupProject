@@ -1,0 +1,25 @@
+#profilebg {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+}
+
+#notfound {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 2.5em;
+    padding-left: 500px;
+    padding-right: 500px;
+    background: rgba(0, 0, 0, 0.8);
+}

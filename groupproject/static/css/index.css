@@ -40,6 +40,9 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    padding-left: 50px;
+    padding-right: 50px;
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .options {
