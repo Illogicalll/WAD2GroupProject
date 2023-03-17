@@ -7,7 +7,7 @@ class User(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	FirstName = models.CharField(max_length=50)
 	LastName = models.CharField(max_length=50)
-	BirthOfData = models.DateTimeField()
+	BirthOfDate = models.DateTimeField()
 	Address = models.CharField(max_length=1000,blank=True)
 	UserID = models.PositiveIntegerField(unique=True)
 	phoneNum = models.CharField(max_length=50,blank=True)
