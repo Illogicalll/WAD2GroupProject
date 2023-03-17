@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from resell.forms import SignUpForm
-from resell.models import Product,User
+from resell.forms import UserCreationForm
+from resell.models import Product,CustomUser
 
 # Create your views here.
 
@@ -13,19 +13,29 @@ def index(request):
 def about(request):
     return render(request, 'resell/about.html')
 
+# def signup(request):
+#     if request.method == 'POST':
+#         form = SignUpForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data.get('username')
+#             raw_password = form.cleaned_data.get('password1')
+#             f_name = form.cleaned_data.get('f_name')
+#             user = authenticate(username=username, password=raw_password)
+#             login(request, user)
+#             return redirect('../success/')
+#     else:
+#         form = SignUpForm()
+#     return render(request, 'resell/signup.html', {'form': form})
+
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            f_name = form.cleaned_data.get('f_name')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
             return redirect('../success/')
     else:
-        form = SignUpForm()
+        form = UserCreationForm()
     return render(request, 'resell/signup.html', {'form': form})
 
 def signupsuccess(request):
@@ -51,10 +61,9 @@ def item(request,product_id):
     return render(request, 'resell/item.html', {'item':item})
     
 def profile(request,profile_id):
-
     try:
-        thisUser = User.objects.get(UserID=profile_id)
-    except User.DoesNotExist:
+        thisUser = CustomUser.objects.get(user_id=profile_id)
+    except CustomUser.DoesNotExist:
         thisUser= None
     
     return render(request, 'resell/profile.html',{'user':thisUser})
