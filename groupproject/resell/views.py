@@ -36,7 +36,9 @@ def sell(request):
     return render(request, 'resell/sell.html')
 
 def buy(request):
-    return render(request, 'resell/listings.html')
+    products = Product.objects.all()[:5]
+
+    return render(request, 'resell/listings.html', {'products':products})
 
 def login(request):
     return render(request, 'resell/login.html')
