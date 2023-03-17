@@ -23,9 +23,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
     path('signup/', views.signup, name='signup'),
-    path('success/', views.signupsuccess, name='success'),
+    path('signupsuccess/', views.signupsuccess, name='signupsuccess'),
+    path('loginsuccess/', views.loginsuccess, name='loginsuccess'),
     path('admin/', admin.site.urls),
     path('item/<int:product_id>', views.item, name='item'),
     path('profile/<int:profile_id>', views.profile, name='profile'),
+    path('login/', views.login, name='login'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

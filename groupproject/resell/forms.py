@@ -5,17 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 from django.contrib.auth import get_user_model
 
-# class SignUpForm(UserCreationForm):
-#     f_name = forms.CharField(max_length=30)
-#     email = forms.EmailField(max_length=254)
-
-#     class Meta:
-#         model = CustomUser
-#         fields = ('username', 'f_name', 'email', 'password1', 'password2', )
-
-
-
-
 User = get_user_model()
 
 class UserCreationForm(forms.ModelForm):
@@ -46,13 +35,7 @@ class UserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-    
-    # def save(self, *args, **kwargs):
-    #     user = super().save(commit=False)
-    #     last_user = CustomUser.objects.all().order_by('-user_id').first()
-    #     if last_user:
-    #         self.user_id = last_user.user_id + 1
-    #     else:
-    #         self.user_id = 1
-    #     super().save(*args, **kwargs)
-    #     return user
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Username')
+    password = forms.CharField(widget=forms.PasswordInput, label='Password')

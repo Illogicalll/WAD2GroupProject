@@ -3,36 +3,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
-
-# class User(AbstractBaseUser):
-#     uid = models.UUIDField(
-#         default="",
-#         blank=True,
-#         null=True,
-#         unique=True,
-#     )
-
-#     USERNAME_FIELD = "uid"
-#     username = models.CharField(max_length=30, unique=True)
-#     email = models.EmailField(('email address'), max_length=254,unique=True, null=True, blank=True)
-#     avtar = models.ImageField(upload_to='thumbpath', blank=True)
-#     mobile_no = models.CharField(max_length=15, default="")
-#     class Meta(AbstractBaseUser.Meta):
-#        swappable = 'AUTH_USER_MODEL'
-	# user = models.OneToOneField(User, on_delete=models.CASCADE)
-	# FirstName = models.CharField(max_length=50)
-	# LastName = models.CharField(max_length=50)
-	# BirthOfData = models.DateTimeField()
-	# Address = models.CharField(max_length=1000,blank=True)
-	# UserID = models.PositiveIntegerField(unique=True)
-	# phoneNum = models.CharField(max_length=50,blank=True)
-	# creditRating = models.IntegerField()
-	# Email = models.CharField(max_length=100)
-	# joinedOn = models.DateTimeField(auto_now=True)
-
-	# def __str__(self):
-	# 	return self.FirstName
-
 	
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, first_name, last_name, user_id, date_of_birth, phone_number, password=None):
@@ -73,7 +43,7 @@ class CustomUser(AbstractBaseUser):
 	user_id = models.PositiveIntegerField(_('user id'), unique=True)
 	date_of_birth = models.DateField(_('date of birth'), blank=True, null=True)
 	phone_number = models.CharField(_('phone number'), max_length=15, blank=True)
-
+	joined_on = models.DateField(auto_now=True)
 	is_active = models.BooleanField(_('active'), default=True)
 	is_admin = models.BooleanField(_('admin'), default=False)
 

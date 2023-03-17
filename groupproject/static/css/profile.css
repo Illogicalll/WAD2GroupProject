@@ -4,6 +4,19 @@
     height: 100vh;
 }
 
+.profile {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+#heading {
+    font-size: 1.5em;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
 .container {
     display: flex;
     flex-direction: column;

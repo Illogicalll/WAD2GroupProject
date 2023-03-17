@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>User Profile: {{ CustomUser.UserID }}</title>
+        <title>User Profile: {{ user.username }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{% static 'css/profile.css' %}" rel="stylesheet">
@@ -17,10 +17,13 @@
         <div id="profilebg">
             <div style="color:white">
             {% if user %}
-                <h1>{{ CustomUser.FirstName }} {{ CustomUser.LastName }}</h1>
-                <p>This is a CustomUser profile.</p>
-                <h3>Joined on:</h3>
-                <p>{{ CustomUser.joinedOn }}</p>
+            <div class="profile">
+                <div id="heading">
+                    <h1>{{ user.username }}</h1>
+                </div>
+                <p>Name: {{ user.first_name }} {{user.last_name }}</p>
+                <p>Joined On: {{ user.joined_on }}</p>
+            </div>
             {% else %}
             <div class="container">
                 <p id="notfound">This User Does Not Exist</p>
