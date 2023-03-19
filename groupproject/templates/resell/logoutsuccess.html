@@ -1,43 +1,34 @@
-<!DOCTYPE html>
 {% load static %}
 
-
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>About</title>
+        <title>Success</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
-        <link href="{% static 'css/about.css' %}" rel="stylesheet">
+        <link href="{% static 'css/loginsuccess.css' %}" rel="stylesheet">
     </head>
 
     <body style="background-color:black">
-        <div id="aboutbg">
-            <div id="about">
+        <div id="successbg">
+            <div id="success" data-url="{% url 'index' %}">
                 <div id="title">
-                    <h1>About Re:Sell</h1>
+                    <h1>See You Soon!</h1>
                 </div>
                 <div id="desc">
-                    <p>Re:Sell is a website facilitating the exchange of unwanted goods for money.</p>
-                    <p>Its aim is to link the seller with the buyer in the most efficient way possible.</p>
-                    <p>Web Application Development 2 Coursework created by:</p> 
-                    <p>Caleb Mok, Imran Bin Mohammad Zaki, Peilin Jia, Robert Molloy, Will Murphy and Yangruizhe Jiang</p>
-                    <p>Group 7D</p>
+                    <p>Taking you back home...</p>
                 </div>
-                <div class="button" role="button" id="back" data-url="{% url 'index' %}">
-                    <div class="buttontext">
-                        <p>Home</p>
-                    </div>
-                </div>
+                <div id="spinner"></div>
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="{% static 'js/indexbg.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="{% static 'js/about.js' %}"></script>
+        <script src="{% static 'js/loginsuccess.js' %}"></script>
     </body>
 
 </html>

@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 #bg {
     position: fixed;
     width: 100%;
@@ -39,6 +43,7 @@
     z-index: 1;
     position: absolute;
     left: 50%;
+    top: 1%;
     transform: translateX(-50%);
     padding-left: 50px;
     padding-right: 50px;
@@ -94,7 +99,6 @@
     cursor: pointer;
 }
 
-
 .button::before {
     position: absolute;
     border-radius: inherit;
@@ -128,4 +132,77 @@
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.2em;
     text-align: center;
+}
+
+#myprofile {
+    pointer-events: none;
+    height: 60px;
+    width: 110px;
+    position: fixed;
+    top: 2%;
+    right: 0%;
+    transform: translate(-50%);
+    z-index: 10;
+    opacity: 0;
+}
+
+#login {
+    pointer-events: none;
+    height: 60px;
+    width: 110px;
+    position: fixed;
+    top: 2%;
+    right: 0%;
+    transform: translate(-50%);
+    z-index: 10;
+    opacity: 0;
+}
+
+.dropdown {
+    position: absolute;
+}
+
+#signout {
+    pointer-events: none;
+    height: 60px;
+    width: 110px;
+    position: fixed;
+    top: 2%;
+    right: 0%;
+    transform: translate(-50%);
+    z-index: 9;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease, 0.5s;
+}
+
+.dropdown:hover #signout {
+    transform: translateY(120%) translateX(-50%);
+    opacity: 1;
+}
+
+.button2 {
+position: relative;
+background-color: black;
+border-radius: 10px;
+cursor: pointer;
+}
+
+.button2::before {
+position: absolute;
+border-radius: inherit;
+content: "";
+height: 100%;
+width: 100%;
+left: 0px;
+top: 0px;
+z-index: 2;
+opacity: 0.1;
+transition: opacity 500ms;
+border: 1px solid white;
+}
+
+.button2:hover::before {
+background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
+opacity: 1;
+border: 1px solid red;
 }

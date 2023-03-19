@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 	
 class CustomUserManager(BaseUserManager):
-    def create_user(self, username, first_name, last_name, user_id, date_of_birth, phone_number, password=None):
+    def create_user(self, username, first_name, last_name, user_id, phone_number, password=None):
         if not username:
             raise ValueError(_('Users must have a username'))
 
@@ -14,7 +14,6 @@ class CustomUserManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name,
             user_id=user_id,
-            date_of_birth=date_of_birth,
             phone_number=phone_number,
         )
 
@@ -22,35 +21,33 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, first_name, last_name, user_id, date_of_birth, phone_number, password=None):
+    def create_superuser(self, username, first_name, last_name, user_id, phone_number, password=None):
         user = self.create_user(
             username=username,
             password=password,
             first_name=first_name,
             last_name=last_name,
             user_id=user_id,
-            date_of_birth=date_of_birth,
             phone_number=phone_number,
         )
         user.is_admin = True
         user.save(using=self._db)
         return user
-    
+
 class CustomUser(AbstractBaseUser):
 	username = models.CharField(_('username'), unique=True, max_length=30)
 	first_name = models.CharField(_('first name'), max_length=30, blank=True)
 	last_name = models.CharField(_('last name'), max_length=30, blank=True)
 	user_id = models.PositiveIntegerField(_('user id'), unique=True)
-	date_of_birth = models.DateField(_('date of birth'), blank=True, null=True)
 	phone_number = models.CharField(_('phone number'), max_length=15, blank=True)
 	joined_on = models.DateField(auto_now=True)
 	is_active = models.BooleanField(_('active'), default=True)
 	is_admin = models.BooleanField(_('admin'), default=False)
-
+	# profile_picture = models.ImageField(null=True, blank=True, upload_to='static/pfps')
 	objects = CustomUserManager()
 
 	USERNAME_FIELD = 'username'
-	REQUIRED_FIELDS = ['first_name', 'last_name', 'user_id', 'date_of_birth', 'phone_number']
+	REQUIRED_FIELDS = ['first_name', 'last_name', 'user_id', 'phone_number']
 
 	def __str__(self):
 		return self.username
@@ -65,13 +62,20 @@ class CustomUser(AbstractBaseUser):
 	def is_staff(self):
 		return self.is_admin
 
+	# @property
+	# def pfp(self):
+	# 	if self.profile_picture and hasattr(self.profile_picture, 'url'):
+	# 		return self.profile_picture.url
+	# 	else:
+	# 		return "/media/profile_pictures/user.png"
+
 	def save(self, *args, **kwargs):
-			if not self.pk:
-				last_user = CustomUser.objects.all().order_by('-user_id').first()
-				if last_user:
-					self.user_id = last_user.user_id + 1
-				else:
-					self.user_id = 1
+		if not self.pk:
+			last_user = CustomUser.objects.all().order_by('-user_id').first()
+			if last_user:
+				self.user_id = last_user.user_id + 1
+			else:
+				self.user_id = 1
 			super().save(*args, **kwargs)
 
 

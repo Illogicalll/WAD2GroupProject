@@ -28,6 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('item/<int:product_id>', views.item, name='item'),
     path('profile/<int:profile_id>', views.profile, name='profile'),
+    path('profile', views.myprofile, name='myprofile'),
     path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -15,11 +15,11 @@
 
     <body style="background-color:black">
         <div id="loginbg">
-            <div id="about">
+            <div id="login">
                 <div id="title">
                     <h1>Customer Login</h1>
                 </div>
-                <div id="desc">
+                <div class="item" id="desc">
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -30,9 +30,21 @@
                         </div>
                     </form>
                 </div>
+                <div class="item" id="signup">
+                    <div id="textsection">
+                        <p>Don't Have An Account?</p>
+                    </div>
+                    <div id="signup">
+                        <div class="button" role="button" id="signupbutton" data-url="{% url 'signup' %}">
+                            <div class="buttontext">
+                                <p>Sign Up</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="button" role="button" id="back" data-url="{% url 'index' %}">
                     <div class="buttontext">
-                        <p>Back</p>
+                        <p>Home</p>
                     </div>
                 </div>
             </div>

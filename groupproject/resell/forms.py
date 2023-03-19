@@ -20,7 +20,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name' ,'date_of_birth', 'phone_number')
+        fields = ('username', 'first_name', 'last_name' , 'phone_number')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -34,6 +34,9 @@ class UserCreationForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
+            # if 'profile_picture' in self.cleaned_data:
+            #     user.profile_picture = self.cleaned_data['profile_picture']
+            #     user.save()
         return user
 
 class LoginForm(forms.Form):

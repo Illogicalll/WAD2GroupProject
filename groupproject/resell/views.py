@@ -5,11 +5,13 @@ from django.contrib.auth.decorators import login_required
 from resell.forms import UserCreationForm, LoginForm
 from resell.models import Product,CustomUser
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'resell/index.html')
+    thisUser = request.user
+    return render(request, 'resell/index.html', {'user':thisUser})
 
 def about(request):
     return render(request, 'resell/about.html')
@@ -72,6 +74,18 @@ def profile(request,profile_id):
         thisUser= None
     
     return render(request, 'resell/profile.html',{'user':thisUser})
+
+def myprofile(request):
+    try:
+        thisUser = CustomUser.objects.get(user_id=request.user.user_id)
+    except CustomUser.DoesNotExist:
+        thisUser= None
+    
+    return render(request, 'resell/profile.html',{'user':thisUser})
+
+def logout(request):
+    auth_logout(request)
+    return render(request, 'resell/logoutsuccess.html')
 
 @login_required
 def editprofile(request):
