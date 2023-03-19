@@ -83,8 +83,6 @@ else {
     returning();
 }
 
-
-
 const handleMouseMove = e => {
     const {currentTarget:target} = e;
     const rect = target.getBoundingClientRect(),
