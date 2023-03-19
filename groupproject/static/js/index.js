@@ -97,25 +97,3 @@ const handleMouseMove = e => {
 for(const button of document.querySelectorAll(".button")) {
     button.onmousemove = e => handleMouseMove(e);
 }
-
-// profileButton = document.querySelector('#myprofile');
-// signOutButton = document.querySelector('#signout');
-
-// function handleEnter() {
-//     const showtl = gsap.timeline();
-//     showtl.to('#signout', {yPercent:120, xPercent:-50}, '<');
-//     showtl.to('#signout', {opacity: 1, duration:0.2});
-// }
-
-// function handleLeave() {
-//     setTimeout(function() {
-//         const hidetl = gsap.timeline();
-//         hidetl.to('#signout', {yPercent:0, xPercent:-50}, '<');
-//         hidetl.to('#signout', {opacity: 0, duration:0.2});
-//     }, 500);
-// }
-
-// profileButton.addEventListener('mouseenter', handleEnter);
-// signOutButton.addEventListener('mouseenter', handleEnter);
-// profileButton.addEventListener('mouseleave', handleLeave);
-// signOutButton.addEventListener('mouseleave', handleLeave);
