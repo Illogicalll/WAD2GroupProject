@@ -25,7 +25,8 @@ function showButtons(fast = true) {
     if (fast) {
         dur = 1;
     }
-    gsap.fromTo('#buttons', {opacity:0},{opacity:1,ease:"slow(0.7, 0.7, false)", duration:2});
+    gsap.fromTo('#buttons', {opacity:0},{opacity:1,ease:"slow(0.7, 0.7, false)", duration:2},'<');
+    gsap.fromTo('.button', {opacity:0},{opacity:1,ease:"slow(0.7, 0.7, false)", duration:2});
     gsap.fromTo('#bg', {opacity:0}, {opacity:1,duration:dur})
     $("#buying").css("pointer-events","auto");
     $("#buying").click(function() {
@@ -38,6 +39,18 @@ function showButtons(fast = true) {
     $("#about").css("pointer-events","auto");
     $("#about").click(function() {
         window.location.href = $("#about").attr("data-url")
+    });
+    $("#login").css("pointer-events","auto");
+    $("#login").click(function() {
+        window.location.href = $("#login").attr("data-url")
+    });
+    $("#myprofile").css("pointer-events","auto");
+    $("#myprofile").click(function() {
+        window.location.href = $("#myprofile").attr("data-url")
+    });
+    $("#signout").css("pointer-events","auto");
+    $("#signout").click(function() { 
+        window.location.href = $("#signout").attr("data-url")
     });
 }
 
@@ -84,3 +97,25 @@ const handleMouseMove = e => {
 for(const button of document.querySelectorAll(".button")) {
     button.onmousemove = e => handleMouseMove(e);
 }
+
+// profileButton = document.querySelector('#myprofile');
+// signOutButton = document.querySelector('#signout');
+
+// function handleEnter() {
+//     const showtl = gsap.timeline();
+//     showtl.to('#signout', {yPercent:120, xPercent:-50}, '<');
+//     showtl.to('#signout', {opacity: 1, duration:0.2});
+// }
+
+// function handleLeave() {
+//     setTimeout(function() {
+//         const hidetl = gsap.timeline();
+//         hidetl.to('#signout', {yPercent:0, xPercent:-50}, '<');
+//         hidetl.to('#signout', {opacity: 0, duration:0.2});
+//     }, 500);
+// }
+
+// profileButton.addEventListener('mouseenter', handleEnter);
+// signOutButton.addEventListener('mouseenter', handleEnter);
+// profileButton.addEventListener('mouseleave', handleLeave);
+// signOutButton.addEventListener('mouseleave', handleLeave);

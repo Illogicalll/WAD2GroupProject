@@ -38,6 +38,12 @@
     background: rgba(0, 0, 0, 0.8);
 }
 
+@media (max-width: 955px) {
+    #desc {
+      line-height: 1;
+    }
+  }
+
 .button {
     position: relative;
     background-color: black;

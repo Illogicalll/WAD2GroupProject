@@ -1,5 +1,5 @@
 VANTA.DOTS({
-    el: "#signupbg",
+    el: "#loginbg",
     mouseControls: false,
     touchControls: false,
     gyroControls: false,
@@ -17,6 +17,7 @@ VANTA.DOTS({
 
 $('#submit').click(function() {document.forms[0].submit()});
 $("#back").click(function() {window.location.href = $("#back").attr("data-url")});
+$("#signup").click(function() {window.location.href = $("#signupbutton").attr("data-url")});
 
 const handleMouseMove = e => {
     const {currentTarget:target} = e;

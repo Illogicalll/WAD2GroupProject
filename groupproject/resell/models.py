@@ -1,23 +1,83 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
+	
+class CustomUserManager(BaseUserManager):
+    def create_user(self, username, first_name, last_name, user_id, phone_number, password=None):
+        if not username:
+            raise ValueError(_('Users must have a username'))
 
-class User(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	FirstName = models.CharField(max_length=50)
-	LastName = models.CharField(max_length=50)
-	BirthOfDate = models.DateTimeField()
-	Address = models.CharField(max_length=1000,blank=True)
-	UserID = models.PositiveIntegerField(unique=True)
-	phoneNum = models.CharField(max_length=50,blank=True)
-	creditRating = models.IntegerField()
-	Email = models.CharField(max_length=100)
-	joinedOn = models.DateTimeField(auto_now=True)
+        user = self.model(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            user_id=user_id,
+            phone_number=phone_number,
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, first_name, last_name, user_id, phone_number, password=None):
+        user = self.create_user(
+            username=username,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            user_id=user_id,
+            phone_number=phone_number,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+class CustomUser(AbstractBaseUser):
+	username = models.CharField(_('username'), unique=True, max_length=30)
+	first_name = models.CharField(_('first name'), max_length=30, blank=True)
+	last_name = models.CharField(_('last name'), max_length=30, blank=True)
+	user_id = models.PositiveIntegerField(_('user id'), unique=True)
+	phone_number = models.CharField(_('phone number'), max_length=15, blank=True)
+	joined_on = models.DateField(auto_now=True)
+	is_active = models.BooleanField(_('active'), default=True)
+	is_admin = models.BooleanField(_('admin'), default=False)
+	# profile_picture = models.ImageField(null=True, blank=True, upload_to='static/pfps')
+	objects = CustomUserManager()
+
+	USERNAME_FIELD = 'username'
+	REQUIRED_FIELDS = ['first_name', 'last_name', 'user_id', 'phone_number']
 
 	def __str__(self):
-		return self.FirstName
-	
+		return self.username
+
+	def has_perm(self, perm, obj=None):
+		return True
+
+	def has_module_perms(self, app_label):
+		return True
+
+	@property
+	def is_staff(self):
+		return self.is_admin
+
+	# @property
+	# def pfp(self):
+	# 	if self.profile_picture and hasattr(self.profile_picture, 'url'):
+	# 		return self.profile_picture.url
+	# 	else:
+	# 		return "/media/profile_pictures/user.png"
+
+	def save(self, *args, **kwargs):
+		if not self.pk:
+			last_user = CustomUser.objects.all().order_by('-user_id').first()
+			if last_user:
+				self.user_id = last_user.user_id + 1
+			else:
+				self.user_id = 1
+			super().save(*args, **kwargs)
+
 
 class Authentication_System(models.Model):
 	Email = models.CharField(max_length=100)
@@ -64,7 +124,7 @@ class Product(models.Model):
 
 class Wishlist(models.Model):
 	user = models.ForeignKey(
-		User, on_delete=models.SET_NULL,null=True, blank=True)
+		CustomUser, on_delete=models.SET_NULL,null=True, blank=True)
 	Product = models.ForeignKey(Product, on_delete=models.CASCADE)
 	addAt = models.DateTimeField(auto_now=True)
 
@@ -83,7 +143,7 @@ ORDER_STATUS = (
 class Order(models.Model):
 	wishlist = models.OneToOneField(Wishlist, on_delete=models.CASCADE,blank=True)
 	orderdBy = models.ForeignKey(
-		User, on_delete=models.SET_NULL,null=True, blank=True)
+		CustomUser, on_delete=models.SET_NULL,null=True, blank=True)
 	shippingAddr = models.CharField(max_length=200)
 	subtotal = models.PositiveIntegerField()
 	disacount = models.PositiveIntegerField()

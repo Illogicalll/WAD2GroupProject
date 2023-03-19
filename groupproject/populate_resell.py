@@ -7,9 +7,9 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 import django
 django.setup()
 
-from resell.models import User, Authentication_System, Category, Product, Wishlist, Order
+from resell.models import CustomUser, Authentication_System, Category, Product, Wishlist, Order
 from datetime import datetime, timedelta
-from django.contrib.auth.models import User
+from django.contrib.auth.models import CustomUser
 from django.utils.text import slugify
 
 def populate():
@@ -60,8 +60,8 @@ def populate():
 users = []
 for i in range(1,11):
      username = f"user{i}"
-     if not User.objects.filter(username=username).exists():
-         user = User.objects.create_user(
+     if not CustomUser.objects.filter(username=username).exists():
+         user = CustomUser.objects.create_user(
              username=f"user{i}",
              email=f"951975031@qq.com",
              password="123456789"

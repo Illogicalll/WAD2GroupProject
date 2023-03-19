@@ -1,10 +1,10 @@
-#signupbg {
+#bg {
     position: fixed;
     width: 100%;
     height: 100vh;
 }
 
-#signup {
+#login {
     display: flex;
     row-gap: 100px;
     flex-direction: column;
@@ -15,6 +15,15 @@
     height: 100vh;
 }
 
+.item {
+    margin-top: -50px;
+}
+
+.item + .item {
+    margin-top: -80px;
+    margin-bottom: -30px;
+}
+
 #title {
     font-family: 'Ubuntu', sans-serif;
     text-align: center;
@@ -23,10 +32,6 @@
     padding-left: 50px;
     padding-right: 50px;
     background: rgba(0, 0, 0, 0.8);
-}
-
-#back {
-    margin-top: -70px;
 }
 
 .button {
@@ -66,6 +71,23 @@
 }
 
 #submit {
+    display: block;
+    margin: 0 auto;
+    height: 40px;
+    width: 130px;
+    line-height: 40px;
+}
+
+#textsection {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#signupbutton {
     display: block;
     margin: 0 auto;
     height: 40px;
