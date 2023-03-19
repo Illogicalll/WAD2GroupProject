@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>About</title>
+        <title>Login</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
@@ -19,16 +19,25 @@
                 <div id="title">
                     <h1>Customer Login</h1>
                 </div>
-                <div class="item" id="desc">
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <div class="button" role="button" id="submit" data-url="">
-                            <div class="buttontext">
-                                <p>Log In</p>
+                <div class="form">
+                    <div id="form">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="formfield">
+                                <input placeholder = " " type="text" id="username" name="username" required>
+                                <label for="username">Username</label>
                             </div>
-                        </div>
-                    </form>
+                            <div class="formfield">
+                                <input placeholder = " " type="text" id="password" name="password" required>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="button" role="button" id="submit" data-url="">
+                                <div class="buttontext">
+                                    <p>Submit</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="item" id="signup">
                     <div id="textsection">

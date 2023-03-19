@@ -21,7 +21,30 @@
                 <div id="form">
                     <form method="post">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="username" name="username" required>
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="first_name" name="first_name" required>
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="last_name" name="last_name" required>
+                            <label for="last_name">Last Name</label>
+                        </div>
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="phone_number" name="phone_number" required>
+                            <label for="phone_number">Phone Number</label>
+                        </div>
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="password1" name="password1" required>
+                            <label for="password1">Password</label>
+                        </div>
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="password2" name="password2" required>
+                            <label for="password2">Confirm Password</label>
+                        </div>
                         <div class="button" role="button" id="submit" data-url="">
                             <div class="buttontext">
                                 <p>Submit</p>
