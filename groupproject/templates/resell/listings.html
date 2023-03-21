@@ -11,9 +11,9 @@
         {% for product in products %}
             <div>
 
-                <a href="{% url 'item' product.prodID %}">{{ product.prodName }}</a><br>
-                <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product image" height="150" />
-                <p>£{{ product.Price }}</p>
+                <a href="{% url 'item' product.product_id %}">{{ product.prodName }}</a><br>
+                <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
+                <p>£{{ product.price }}</p>
             </div>
         {% endfor %}
     </body>

@@ -32,5 +32,8 @@ urlpatterns = [
     path('profile', views.myprofile, name='myprofile'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
+    path('newlisting/', views.newlisting, name='newlisting'),
+    path('listingsuccess/', views.listingsuccess, name='listingsuccess'),
+    path('accounts/login/?next=/newlisting/', views.login, name='loginredirect'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

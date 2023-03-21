@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
 from django.utils.translation import gettext_lazy as _
 
@@ -98,30 +99,46 @@ class Category(models.Model):
 		return self.cateName
 
 PRODUCT_CONDITION = (
-	("Brand New", "Brand New"),
-	("Used", "Used"),
-	("Open Not Used", "Open Not Used"),
+	("Brand New and Sealed", "Brand New and Sealed"),
+	("Like New", "Like New"),
+	("Signs of Usage", "Signs of Usage"),
+	("Broken/For Parts Only", "Broken/For Parts Only"),
+)
+
+PRODUCT_CATEGORY = (
+	("Home and Furniture", "Home and Furniture"),
+	("Technology", "Technology"),
+	("Clothing", "Clothing"),
+	("Other", "Other"),
 )
 
 class Product(models.Model):
-	prodID = models.PositiveIntegerField(unique = True)
-	prodName = models.CharField(max_length = 100)
-	slug = models.SlugField(unique = True)
-	Category = models.ForeignKey(Category, on_delete=models.CASCADE)
-	Brand = models.CharField(max_length = 100)
-	Condition = models.CharField(max_length=50, choices = PRODUCT_CONDITION)
-	Price = models.PositiveIntegerField()
-	Description = models.TextField()
-	image = models.ImageField(upload_to = "products")
+	product_id = models.PositiveIntegerField(_('id'), unique = True, default=0)
+	user_id = models.PositiveIntegerField(blank=True, default=0)
+	name = models.CharField(_('name'), blank=True, max_length = 100)
+	category = models.CharField(_('category'), blank=True, max_length=50, choices = PRODUCT_CATEGORY)
+	brand = models.CharField(_('brand'), blank=True, max_length = 100)
+	condition = models.CharField(_('condition'), max_length=50, blank=True, choices = PRODUCT_CONDITION)
+	price = models.PositiveIntegerField(_('price'), blank=True, default=0)
+	description = models.TextField(_('description'), blank=True, default="")
+	image = models.ImageField(_('image'), upload_to = "products")
 	view_count = models.PositiveIntegerField(default=0)
 
+	REQUIRED_FIELDS = ['name', 'brand','category', 'condition', 'price', 'description']
 
 	def __str__(self):
-		return self.prodName
-	
-	
-	
+		return self.name
 
+	def save(self, user_id, *args, **kwargs):
+		if not self.pk:
+			last_product = Product.objects.all().order_by('-product_id').first()
+			if last_product:
+				self.product_id = last_product.product_id + 1
+			else:
+				self.product_id = 1
+			self.user_id = user_id
+			super().save(*args, **kwargs)
+	
 class Wishlist(models.Model):
 	user = models.ForeignKey(
 		CustomUser, on_delete=models.SET_NULL,null=True, blank=True)

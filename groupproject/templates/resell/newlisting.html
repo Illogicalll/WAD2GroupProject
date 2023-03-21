@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>New Listing</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
+        <link href="{% static 'css/newlisting.css' %}" rel="stylesheet">
+    </head>
+
+    <body style="background-color:black">
+        <div id="newlistingbg">
+            <div id="signup">
+                <div id="title">
+                    <h1>Create New Listing</h1>
+                </div>
+                <div id="form">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="name" name="name" required>
+                            <label for="name">Product Name</label>
+                        </div>
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="brand" name="brand" required>
+                            <label for="brand">Brand</label>
+                        </div>
+                        <div class="formfield">
+                            <select id="category" name="category" required>
+                                <option value="">--Please Choose a Category--</option>
+                                <option value="Home and Furniture">Home and Furniture</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <label for="category">Category</label>
+                        </div>
+                        <div class="formfield">
+                            <select id="condition" name="condition" required>
+                                <option value="">--Please Choose a Condition--</option>
+                                <option value="Brand New and Sealed">Brand New and Sealed</option>
+                                <option value="Like New">Like New</option>
+                                <option value="Signs of Usage">Signs of Usage</option>
+                                <option value="Broken/For Parts Only">Broken/For Parts Only</option>
+                            </select>
+                            <label for="condition">Condition</label>
+                        </div>
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="price" name="price" required>
+                            <label for="price">Price</label>
+                        </div>
+                        <!-- <div class="formfield">
+                            <input type="file" accept=".jpg,.jpeg,.png" id="image" name="image" required>
+                            <label for="image">Image</label>
+                        </div> -->
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="description" name="description" required>
+                            <label for="description">Description</label>
+                        </div>
+                        <div class="button" role="button" id="submit" data-url="">
+                            <div class="buttontext">
+                                <p>Submit</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="button" role="button" id="back" data-url="{% url 'index' %}">
+                    <div class="buttontext">
+                        <p>Home</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="{% static 'js/indexbg.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{% static 'js/newlisting.js' %}"></script>
+    </body>
+
+</html>

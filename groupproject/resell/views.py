@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from resell.forms import UserCreationForm, LoginForm
+from resell.forms import UserCreationForm, LoginForm, ListingCreationForm
 from resell.models import Product,CustomUser
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -36,10 +36,6 @@ def signupsuccess(request):
 def loginsuccess(request):
     return render(request, 'resell/loginsuccess.html')
 
-@login_required
-def sell(request):
-    return render(request, 'resell/sell.html')
-
 def buy(request):
     products = Product.objects.all()[:5]
 
@@ -49,9 +45,8 @@ def login(request):
     return render(request, 'resell/login.html')
 
 def item(request,product_id):
-
     try:
-        item = Product.objects.get(prodID=product_id)
+        item = Product.objects.get(product_id=product_id)
     except Product.DoesNotExist:
         item = None
 
@@ -93,10 +88,24 @@ def logout(request):
     auth_logout(request)
     return render(request, 'resell/logoutsuccess.html')
 
-@login_required
+@login_required(login_url='../login/')
 def editprofile(request):
     return render(request,'resell/editprofile.html')
 
-@login_required
+@login_required(login_url='../login/')
 def checkout(request):
     return render(request,'resell/checkout.html')
+
+@login_required(login_url='../login/')
+def newlisting(request):
+    if request.method == 'POST':
+        form = ListingCreationForm(request.POST)
+        if form.is_valid():
+            form.save(user_id=request.user.user_id)
+            return redirect('../listingsuccess/')
+    else:
+        form = ListingCreationForm()
+    return render(request, 'resell/newlisting.html', {'form': form})
+
+def listingsuccess(request):
+    return render(request,'resell/listingsuccess.html')
