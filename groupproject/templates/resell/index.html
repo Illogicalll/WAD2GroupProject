@@ -1,9 +1,10 @@
+{% extends 'resell/base.html' %}
 {% load static %}
 
 
     {% block title_block %}
         Home
-    {% endblock %}
+    {% endblock%}
     {% block cssLink_block %}
         <link href="{% static 'css/index.css' %}" rel="stylesheet">
     {% endblock %}
@@ -11,31 +12,10 @@
     {% block body_block %}
     <body style="background-color:black">
         <div class="navbar"></div>
-        {% if user.is_authenticated %}
-            <div class="dropdown">
-                <div class="button" role="button" id="myprofile" data-url="{% url 'profile' user.user_id %}">
-                    <div class="abouttext">
-                        <p>My Profile</p>
-                    </div>
-                </div>
-                <div class="button2" role="button" id="signout" data-url="{% url 'logout' %}">
-                    <div class="abouttext">
-                        <p>Sign Out</p>
-                    </div>
-                </div>
-            </div>
-        {% else %}
-        <div class="button" role="button" id="login" data-url="{% url 'login' %}">
-            <div class="abouttext">
-                <p>Log In</p>
-            </div>
-        </div>
-        {% endif %}
-        {% endif $}
         <div id="bg">
             <div class="options">
                 <div id="buttons">
-                    <div class="button" role="button" id="buying" data-url="{% url 'listings' %}">
+                    <div class="button" role="button" id="buying" data-url="">
                         <div class="buttontext">
                             <p>Buying</p>
                         </div>
@@ -48,9 +28,9 @@
                 </div>
             </div>
             <div class="button" role="button" id="about" data-url="{% url 'about' %}">
-                <div class="abouttext">
-                    <p>About</p>
-                </div>
+                        <div class="abouttext">
+                            <p>About</p>
+                        </div>
             </div>
         </div>
         <div class="loadanim">
@@ -66,3 +46,4 @@
         <script src="{% static 'js/index.js' %}" async defer></script>
     </body>
     {% endblock %}
+
