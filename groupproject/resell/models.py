@@ -17,7 +17,6 @@ class CustomUserManager(BaseUserManager):
             user_id=user_id,
             phone_number=phone_number,
         )
-
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -51,7 +50,7 @@ class CustomUser(AbstractBaseUser):
 	REQUIRED_FIELDS = ['first_name', 'last_name', 'user_id', 'phone_number']
 
 	def __str__(self):
-		return self.username
+		return str(self.is_admin)
 
 	def has_perm(self, perm, obj=None):
 		return True
@@ -77,7 +76,7 @@ class CustomUser(AbstractBaseUser):
 				self.user_id = last_user.user_id + 1
 			else:
 				self.user_id = 1
-			super().save(*args, **kwargs)
+		super().save(*args, **kwargs)
 
 
 class Authentication_System(models.Model):
