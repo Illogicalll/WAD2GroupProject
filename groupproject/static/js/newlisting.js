@@ -17,3 +17,14 @@ VANTA.DOTS({
 
 $('#submit').click(function() {document.forms[0].submit()});
 $("#back").click(function() {window.location.href = $("#back").attr("data-url")});
+const errorDiv = document.querySelector("#error")
+if (document.referrer == "http://127.0.0.1:8000/newlisting/") {
+    addErrorMessage();
+}
+
+function addErrorMessage() {
+    const msg = document.createElement("p");
+    msg.innerHTML = "Please Fill Out All Fields";
+    $("#error").css("margin-top", "-130px");
+    errorDiv.appendChild(msg);
+}

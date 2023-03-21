@@ -95,14 +95,11 @@ input[type="text"] {
     font-family: 'Ubuntu', sans-serif;
 }
 
-label {
+.entryboxlabel {
     position: relative;
     top: -2.4rem;
     padding: 0 0.5rem;
     pointer-events: none;
-}
-
-.formfield label {
     color: rgb(163, 161, 161);
     font-family: 'Ubuntu', sans-serif;
     font-size: 1em;
@@ -111,9 +108,9 @@ label {
     background: black;
 }
 
-.formfield input:focus + label,
-.formfield input:not(:placeholder-shown) + label {
-    top: -3.7rem;
+.formfield input:focus + .entryboxlabel,
+.formfield input:not(:placeholder-shown) + .entryboxlabel {
+    top: -3.8rem;
     font-size: 0.8em;
 }
 
@@ -125,4 +122,45 @@ input:hover {
 input:focus {
     border-color: greenyellow;
     transition-duration: 0.5s;
+}
+
+select {
+    appearance: none;
+    padding: 13px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    width: 100%;
+    text-align-last: center;
+}
+
+.dropdownlabel {
+    position: relative;
+    color: rgb(163, 161, 161);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0.8em;
+    top: -3.4rem;
+    background-color: black;
+    padding: 0 0.5rem;
+}
+
+select:hover {
+    border-color: white;
+    transition-duration: 0.5s;
+}
+
+select:focus {
+    border-color: greenyellow;
+    transition-duration: 0.5s;
+}
+
+#error {
+    margin-top: -90px;
+    background: rgba(0, 0, 0, 0.8);
+    padding-left: 50px;
+    padding-right: 50px;
+    color: red;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3em;
 }

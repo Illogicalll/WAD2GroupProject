@@ -46,6 +46,15 @@ class LoginForm(forms.Form):
     
     
 class ListingCreationForm(forms.ModelForm):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].required = True
+        self.fields['brand'].required = True
+        self.fields['category'].required = True
+        self.fields['condition'].required = True
+        self.fields['price'].required = True
+        self.fields['description'].required = True
 
     class Meta:
         model = Product

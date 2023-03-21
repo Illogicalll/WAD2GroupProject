@@ -18,16 +18,18 @@
                 <div id="title">
                     <h1>Create New Listing</h1>
                 </div>
+                <div id="error">
+                </div>
                 <div id="form">
                     <form method="post">
                         {% csrf_token %}
                         <div class="formfield">
                             <input placeholder = " " type="text" id="name" name="name" required>
-                            <label for="name">Product Name</label>
+                            <label class="entryboxlabel" for="name">Product Name</label>
                         </div>
                         <div class="formfield">
                             <input placeholder = " " type="text" id="brand" name="brand" required>
-                            <label for="brand">Brand</label>
+                            <label class="entryboxlabel" for="brand">Brand</label>
                         </div>
                         <div class="formfield">
                             <select id="category" name="category" required>
@@ -37,7 +39,7 @@
                                 <option value="Clothing">Clothing</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <label for="category">Category</label>
+                            <label class="dropdownlabel" for="category">Category</label>
                         </div>
                         <div class="formfield">
                             <select id="condition" name="condition" required>
@@ -47,11 +49,11 @@
                                 <option value="Signs of Usage">Signs of Usage</option>
                                 <option value="Broken/For Parts Only">Broken/For Parts Only</option>
                             </select>
-                            <label for="condition">Condition</label>
+                            <label class="dropdownlabel" for="condition">Condition</label>
                         </div>
                         <div class="formfield">
                             <input placeholder = " " type="text" id="price" name="price" required>
-                            <label for="price">Price</label>
+                            <label class="entryboxlabel" for="price">Price</label>
                         </div>
                         <!-- <div class="formfield">
                             <input type="file" accept=".jpg,.jpeg,.png" id="image" name="image" required>
@@ -59,7 +61,7 @@
                         </div> -->
                         <div class="formfield">
                             <input placeholder = " " type="text" id="description" name="description" required>
-                            <label for="description">Description</label>
+                            <label class="entryboxlabel" for="description">Description</label>
                         </div>
                         <div class="button" role="button" id="submit" data-url="">
                             <div class="buttontext">
