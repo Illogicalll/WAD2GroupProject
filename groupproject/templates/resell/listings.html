@@ -1,20 +1,30 @@
+{% extends 'resell/base.html' %}
 <!DOCTYPE html>
 
 {% load static %}
 
-<html>
-    <head>
-        <title>Item</title>
-    </head>
 
-    <body>
+    {% block title_block %}
+        Item
+    {% endblock%}
+
+    {% block body_block %}
+        
+        <form method="get">
+            {{ form.as_p }}
+            <button type="submit">Filter</button>
+        </form>
+
         {% for product in products %}
             <div>
-
-                <a href="{% url 'item' product.product_id %}">{{ product.prodName }}</a><br>
+                <a href="{% url 'item' product.product_id %}">{{ product.name }}</a><br>
                 <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
                 <p>£{{ product.price }}</p>
             </div>
+        {% empty %}
+            <p>Sorry, no listings found.</p>
         {% endfor %}
-    </body>
+
+
+    {% endblock %}
 </html>
