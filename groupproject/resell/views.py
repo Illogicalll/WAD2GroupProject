@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from resell.forms import UserCreationForm, LoginForm, ListingCreationForm
+from resell.forms import UserCreationForm, LoginForm, ListingCreationForm, ProductFilterForm
 from resell.models import Product,CustomUser
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.views.generic import ListView
 
 # Create your views here.
 
@@ -36,10 +37,35 @@ def signupsuccess(request):
 def loginsuccess(request):
     return render(request, 'resell/loginsuccess.html')
 
-def buy(request):
-    products = Product.objects.all()[:5]
+class buy(ListView):
+    model = Product
+    template_name = 'resell/listings.html'
+    context_object_name = 'products'
+    paginate_by = 10
 
-    return render(request, 'resell/listings.html', {'products':products})
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        category = self.request.GET.get('category')
+        condition = self.request.GET.get('condition')
+        sort = self.request.GET.get('sort')
+
+        if category:
+            queryset = queryset.filter(category=category)
+        if condition:
+            queryset = queryset.filter(condition=condition)
+        if sort == 'Highest Price':
+            queryset = queryset.order_by('-price')
+        elif sort == 'Lowest Price':
+            queryset = queryset.order_by('price')
+        return queryset
+
+
+    def get_context_data(self, **kwargs):
+        context = super(buy, self).get_context_data(**kwargs)
+        context['form'] = ProductFilterForm
+        return context
+
+    #return render(request, 'resell/listings.html', {'products':products})
 
 def login(request):
     return render(request, 'resell/login.html')

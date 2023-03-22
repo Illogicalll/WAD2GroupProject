@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('item/<int:product_id>', views.item, name='item'),
     path('profile/<int:profile_id>', views.profile, name='profile'),
-    path('listings/', views.buy, name='listings'),
+    path('listings/', views.buy.as_view(), name='listings'),
     path('profile', views.myprofile, name='myprofile'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
