@@ -69,12 +69,18 @@ def login(request):
     return render(request, 'resell/login.html', {'form': form})
     
 def profile(request,profile_id):
+    exists = False
     try:
         thisUser = CustomUser.objects.get(user_id=profile_id)
+        exists = True
     except CustomUser.DoesNotExist:
-        thisUser= None
+        thisUser = None
+    if exists:
+        listings = Product.objects.filter(user_id=profile_id)
+    else:
+        listings = None
     
-    return render(request, 'resell/profile.html',{'user':thisUser})
+    return render(request, 'resell/profile.html', {'user':thisUser, 'listings':listings})
 
 def myprofile(request):
     try:
