@@ -19,6 +19,8 @@ def populate():
     {"name": "Books", "slug": "books"},
     {"name": "Home & Garden", "slug": "home-and-garden"},
     {"name": "Toys & Games", "slug": "toys-and-games"}
+    {"name": "Health & Beauty","slug":"healyh-and-beauty"}
+    {"name": "Music & Movies","slug":"music-and-movies"}
     ]
 
     products = [
@@ -32,6 +34,8 @@ def populate():
     {"name": "Bed", "category": "Home & Garden", "brand": "Pottery Barn", "condition": "Brand New", "price": 800},
     {"name": "Legos", "category": "Toys & Games", "brand": "Lego", "condition": "Brand New", "price": 50},
     {"name": "Board Game", "category": "Toys & Games", "brand": "Hasbro", "condition": "Open Not Used", "price": 30}
+    {"name": "Patulin", "category": "Health & Beauty", "brand": "GlaxoSmithKline","condition": "Brand New", "price": 12}
+    {"name": "Music CD", "category": "Music & Movies", "brand": "Unkonwn","condition": "Used", "price": 20}
 ]
 
     for category in categories:
