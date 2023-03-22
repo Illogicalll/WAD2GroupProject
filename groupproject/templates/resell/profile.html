@@ -15,24 +15,32 @@
 
     <body style="background-color:black">
         <div id="profilebg">
-            <div style="color:white">
-            {% if user %}
             <div class="profile">
-                <div id="heading">
-                    <h1>{{ user.username }}</h1>
+                {% if user %}
+                <h1>{{ user.username }}</h1>
+                <p> {{ user.first_name }} {{user.last_name }}</p>
+                <p>Joined: {{ user.joined_on }}</p>
+                <div class="items">
+                    <h2>Items for Sale</h2>
+                    {% if listings %}
+                        {% for listing in listings %}
+                            <p>{{ listing.name }}</p>
+                            <div class="button" role="button" data-url="{% url 'item' listing.product_id %}">
+                                <div class="buttontext">
+                                    <p>View</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                    <p>No listings found.</p>
+                    {% endif %}
                 </div>
-                <!-- <img src="{{ user.pfp }}" alt="{{ user.username }}'s Profile Picture"></img> -->
-                <p>Name: {{ user.first_name }} {{user.last_name }}</p>
-                <p>Joined On: {{ user.joined_on }}</p>
-            </div>
-            {% else %}
-            <div class="container">
-                <p id="notfound">This User Does Not Exist</p>
-            </div>
-            {% endif %}
-            </div>
+                {% else %}
+                <h1 id="notfound">This User Does Not Exist</h1>
+                {% endif %}
+              </div>
         </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
         <script src="{% static 'js/indexbg.js' %}"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

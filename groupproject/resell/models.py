@@ -87,8 +87,6 @@ class Authentication_System(models.Model):
 		return "AuthenSys: " + str(self)
 
 
-
-
 class Category(models.Model):
 	cateID = models.PositiveIntegerField(unique = True)
 	cateName = models.CharField(max_length = 128)

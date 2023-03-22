@@ -15,6 +15,20 @@ VANTA.DOTS({
     showLines: false
     });
 
-const tl = gsap.timeline();
-tl.fromTo('#notfound', {opacity: 0}, {opacity: 1, duration: 1});
-tl.fromTo('#notfound', {y:-20}, {y:0, duration: 1}, '<');
+
+    
+// const foundtl = gsap.timeline();
+// tl.fromTo('#notfound', {opacity: 0}, {opacity: 1, duration: 1});
+// tl.fromTo('#notfound', {y:-20}, {y:0, duration: 1}, '<');
+
+const tl = gsap.timeline({onComplete: enableButtons});
+tl.fromTo('.profile', {opacity: 0}, {opacity: 1, duration: 2}, '<');
+tl.fromTo('.profile', {yPercent: -20}, {yPercent:0, duration: 1}, '<');
+
+function enableButtons() {
+    $('.button').each(function() {
+        $(this).click(function() {
+            window.location.href = $(this).attr("data-url")
+        });
+      });
+}
