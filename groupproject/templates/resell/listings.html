@@ -6,12 +6,24 @@
 
     {% block title_block %}
         Item
-    {% endblock%}
+    {% endblock %}
+
+    {% block cssLink_block %}
+    {% endblock %}
 
     {% block body_block %}
-        
+
         <form method="get">
-            {{ form.as_p }}
+            {% for field in form %}
+                {{ field.label }}
+                {{ field }}
+                {% if field.label == "Search" %}
+                    <button type="submit">
+                        Search
+                    </button>
+                {% endif %}
+                <br>
+            {% endfor %}
             <button type="submit">Filter</button>
         </form>
 

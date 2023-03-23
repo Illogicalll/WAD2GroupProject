@@ -70,6 +70,7 @@ class ListingCreationForm(forms.ModelForm):
 class ProductFilterForm(forms.Form):
     category_choices = Product.objects.values_list('category', 'category').distinct()
     condition_choices = Product.objects.values_list('condition', 'condition').distinct()
+    search = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Search...'}),required = False)
     category = forms.ChoiceField(choices=[('', 'All')] + list(category_choices), required=False)
     condition = forms.ChoiceField(choices=[('', 'All')] + list(condition_choices), required=False)
     sort = forms.ChoiceField(choices=[('','Default'),
