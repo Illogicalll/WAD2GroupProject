@@ -7,6 +7,7 @@ from resell.models import Product,CustomUser
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.views.generic import ListView
+from django.db.models import Q
 
 # Create your views here.
 
@@ -41,13 +42,17 @@ class buy(ListView):
     model = Product
     template_name = 'resell/listings.html'
     context_object_name = 'products'
-    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        search = self.request.GET.get('search')
         category = self.request.GET.get('category')
         condition = self.request.GET.get('condition')
         sort = self.request.GET.get('sort')
+
+        if search:
+            queryset = queryset.filter(Q(name__icontains=search) | Q(description__icontains=search))
+
 
         if category:
             queryset = queryset.filter(category=category)
@@ -62,7 +67,7 @@ class buy(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(buy, self).get_context_data(**kwargs)
-        context['form'] = ProductFilterForm
+        context['form'] = ProductFilterForm(self.request.GET or None)
         return context
 
     #return render(request, 'resell/listings.html', {'products':products})
