@@ -8,6 +8,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.views.generic import ListView
 from django.db.models import Q
+from django.forms.models import model_to_dict
 
 # Create your views here.
 
@@ -136,7 +137,7 @@ def checkout(request):
 @login_required(login_url='../login/')
 def newlisting(request):
     if request.method == 'POST':
-        form = ListingCreationForm(request.POST)
+        form = ListingCreationForm(request.POST,request.FILES)
         if form.is_valid():
             form.save(user_id=request.user.user_id)
             return redirect('../listingsuccess/')
@@ -147,16 +148,27 @@ def newlisting(request):
 def listingsuccess(request):
     return render(request,'resell/listingsuccess.html')
 
-def wishlist(request,profile_id):
+def wishlist(request):
     exists = False
+    user = request.user
     try:
-        thisUser = CustomUser.objects.get(user_id=profile_id)
+        thisUser = CustomUser.objects.get(user=user.user_id)
         exists = True
     except CustomUser.DoesNotExist:
         thisUser = None
     if exists:
-        wishlist = Wishlist.objects.filter(user=profile_id)
+        wishlistItem = Wishlist.objects.filter(user=user.user_id)
+        products = []
+        for item in wishlistItem:
+                product = model_to_dict(item.Product)
+                products.append(product)
     else:
-        wishlist = None
+        products = None
 
-    return render(request, 'resell/wishlist.html', {'wishlist':wishlist,'user':thisUser})
+    return render(request, 'resell/wishlist.html', {'products':products,'user':thisUser})
+
+def purchase(request):
+    return render(request)
+
+def purchasesuccess(request):
+    return render(request)
