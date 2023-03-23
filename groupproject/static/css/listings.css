@@ -1,0 +1,198 @@
+#listingsbg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #000;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+
+#productlisting {
+    padding-left: 90px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 40px;
+}
+
+.product {
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    background-color: black;
+    border: 1px solid white;
+    overflow: hidden;
+    height: 260px;
+    width: 150px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.product::before {
+    border-radius: inherit;
+    opacity: 0.1;
+    border: 1px solid white;
+}
+
+.product:hover::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
+    opacity: 1;
+    border: 1px solid greenyellow;
+}
+
+.product:hover {
+    border-color: greenyellow;
+}
+
+.container {
+    overflow-y: scroll;
+    height: 70%;
+}
+
+select {
+    appearance: none;
+    padding: 13px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    text-align-last: center;
+}
+
+.dropdownlabel {
+    position: relative;
+    color: rgb(163, 161, 161);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0.8em;
+    background-color: black;
+    padding: 0 0.5rem;
+    top: -1.3rem;
+    right: 50%;
+}
+
+@media (max-width: 910px) {
+    .dropdownlabel {
+        top: -3.3rem;
+        left: 30%;
+    }
+  }
+
+select:hover {
+    border-color: white;
+    transition-duration: 0.5s;
+}
+
+select:focus {
+    border-color: greenyellow;
+    transition-duration: 0.5s;
+}
+
+.button {
+    position: relative;
+    background-color: black;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
+    margin-top: 80px;
+}
+
+.button::before {
+    position: absolute;
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    opacity: 0.1;
+    transition: opacity 500ms;
+    border: 1px solid white;
+}
+
+.button:hover::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
+    opacity: 1;
+    border: 1px solid greenyellow;
+}
+
+.buttontext {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#filters {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 70px;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+::-webkit-scrollbar {
+    opacity: 0;
+}
+
+input[type="text"] {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 250px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-size: 0.8em;
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: 20px;
+}
+
+.entryboxlabel {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 5rem;
+    padding: 0 0.5rem;
+    pointer-events: none;
+    color: rgb(163, 161, 161);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1em;
+    cursor: text;
+    transition: top 200ms ease-in, font-size 200ms ease-in;
+    background: black;
+}
+
+.formfield input:focus + .entryboxlabel,
+.formfield input:not(:placeholder-shown) + .entryboxlabel {
+    top: 3.8rem;
+    font-size: 0.8em;
+}
+
+input:hover {
+    border-color: white;
+    transition-duration: 0.5s;
+}
+
+input:focus {
+    border-color: greenyellow;
+    transition-duration: 0.5s;
+}

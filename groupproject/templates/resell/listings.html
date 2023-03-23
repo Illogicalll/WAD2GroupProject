@@ -9,34 +9,74 @@
     {% endblock %}
 
     {% block cssLink_block %}
+        <link href="{% static 'css/listings.css' %}" rel="stylesheet">
     {% endblock %}
 
-    {% block body_block %}
-
-        <form method="get">
-            {% for field in form %}
-                {{ field.label }}
-                {{ field }}
-                {% if field.label == "Search" %}
-                    <button type="submit">
-                        Search
-                    </button>
-                {% endif %}
-                <br>
-            {% endfor %}
-            <button type="submit">Filter</button>
-        </form>
-
-        {% for product in products %}
-            <div>
-                <a href="{% url 'item' product.product_id %}">{{ product.name }}</a><br>
-                <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
-                <p>£{{ product.price }}</p>
+    
+        {% block body_block %}
+            <div id="listingsbg">
+                <form method="get">
+                    {% csrf_token %}
+                    <div id="filters">
+                        <div class="formfield">
+                            <select id="category" name="category" required>
+                                <option value="">--Please Choose a Category--</option>
+                                <option value="Home and Furniture">Home and Furniture</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <label class="dropdownlabel" for="category">Category</label>
+                        </div>
+                        <div class="formfield">
+                            <select id="condition" name="condition" required>
+                                <option value="">--Please Choose a Condition--</option>
+                                <option value="Brand New and Sealed">Brand New and Sealed</option>
+                                <option value="Like New">Like New</option>
+                                <option value="Signs of Usage">Signs of Usage</option>
+                                <option value="Broken/For Parts Only">Broken/For Parts Only</option>
+                            </select>
+                            <label class="dropdownlabel" for="condition">Condition</label>
+                        </div>
+                        <div class="formfield">
+                            <select id="sort" name="sort" required>
+                                <option value="">--Please Choose a Sorting Method--</option>
+                                <option value="Highest Price">Highest Price</option>
+                                <option value="Lowest Price">Lowest Price</option>
+                            </select>
+                            <label class="dropdownlabel" for="condition">Sort</label>
+                        </div>
+                    </div>
+                    <div class="formfield">
+                        <input placeholder = " " type="text" id="search" name="search" required>
+                        <label class="entryboxlabel" for="search">Search</label>
+                    </div>
+                    <div class="button" role="button" id="submit" data-url="">
+                        <div class="buttontext">
+                            <p>Submit</p>
+                        </div>
+                    </div>
+                    
+                </form>
+                <div class="container">
+                    <div id="productlisting">
+                        {% for product in products %}
+                            <div class="product" data-url="{% url 'item' product.product_id %}">
+                                <p>{{ product.name }}</p>
+                                <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
+                                <p id="price">£{{ product.price }}</p>
+                            </div>
+                        {% empty %}
+                            <p>Sorry, no listings found.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+            <script src="{% static 'js/indexbg.js' %}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="{% static 'js/listings.js' %}"></script>
             </div>
-        {% empty %}
-            <p>Sorry, no listings found.</p>
-        {% endfor %}
-
-
-    {% endblock %}
+        {% endblock %}
+    
 </html>

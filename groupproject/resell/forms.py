@@ -73,6 +73,6 @@ class ProductFilterForm(forms.Form):
     search = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Search...'}),required = False)
     category = forms.ChoiceField(choices=[('', 'All')] + list(category_choices), required=False)
     condition = forms.ChoiceField(choices=[('', 'All')] + list(condition_choices), required=False)
-    sort = forms.ChoiceField(choices=[('','Default'),
+    sort = forms.ChoiceField(choices=[('','--Please Choose a Sorting Method--'),
                                         ('Highest Price', 'Highest Price'),
                                         ('Lowest Price', 'Lowest Price')], required = False)
