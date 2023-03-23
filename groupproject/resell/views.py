@@ -147,15 +147,16 @@ def newlisting(request):
 def listingsuccess(request):
     return render(request,'resell/listingsuccess.html')
 
-def wishlist(request,profile_id):
+@login_required(login_url='../login/')
+def wishlist(request):
     exists = False
     try:
-        thisUser = CustomUser.objects.get(user_id=profile_id)
+        thisUser = CustomUser.objects.get(user_id=request.user.user_id)
         exists = True
     except CustomUser.DoesNotExist:
         thisUser = None
     if exists:
-        wishlist = Wishlist.objects.filter(user=profile_id)
+        wishlist = Wishlist.objects.filter(user=request.user)
     else:
         wishlist = None
 

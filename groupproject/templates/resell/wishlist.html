@@ -3,21 +3,45 @@
 
 
     {% block title_block %}
-        Listings
+        Wishlist
+    {% endblock %}
+
+    {% block cssLink_block %}
+        <link href="{% static 'css/wishlist.css' %}" rel="stylesheet">
     {% endblock %}
 
     {% block body_block %}
-    {% if user %}
-        <p>Wishlist for: {{ user.username }}</p>
-        {% for item in wishlist %}
-            <p>{{ product.name }}</p>
-            <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
-            <p id="price">£{{ product.price }}</p>
-        {% empty %}
-            <p>{{ user.username }} has nothing in their wishlist</p>
-        {% endfor %}
-    {% else %}
-        <p>This user does not exist</p>
-    {% endif %}
-
+        <div id="wishlistbg">
+            <div class="profile">
+                {% if user %}
+                <h1>Your Wishlist</h1>
+                <div class="items">
+                    {% for item in wishlist %}
+                        <p>{{ product.name }}</p>
+                        <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
+                        <p id="price">£{{ product.price }}</p>
+                        <div class="button" role="button" data-url="{% url 'listings' %}">
+                            <div class="buttontext">
+                                <p>Find Things to Add</p>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>You have nothing in your wishlist</p>
+                        <div class="button" id="listings" role="button" data-url="{% url 'listings' %}">
+                            <div class="buttontext">
+                                <p>Find Things to Add</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <h1 id="notfound">This User Does Not Exist</h1>
+                {% endif %}
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="{% static 'js/indexbg.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{% static 'js/wishlist.js' %}"></script>
     {% endblock %}

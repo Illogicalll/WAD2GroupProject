@@ -51,6 +51,10 @@ function showButtons(fast = true) {
     $("#signout").click(function() { 
         window.location.href = $("#signout").attr("data-url")
     });
+    $("#wishlist").css("pointer-events","auto");
+    $("#wishlist").click(function() { 
+        window.location.href = $("#wishlist").attr("data-url")
+    });
 }
 
 function textTop() {
