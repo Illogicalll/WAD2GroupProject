@@ -18,7 +18,12 @@
             <div class="profile">
                 {% if user %}
                 <h1>{{ user.username }}</h1>
-                <p> {{ user.first_name }} {{user.last_name }}</p>
+                {% if user.pfp %}
+                    <img src="{{ MEDIA_URL }}{{ user.profilepicture }}" height="300" width="300">
+                {% else %}
+                    <img src="{{ MEDIA_URL }}profiles/user.png" height="300" width="300">
+                {% endif %}
+                <p> {{ user.first_name }} {{ user.last_name }}</p>
                 <p>Joined: {{ user.joined_on }}</p>
                 <div class="items">
                     <h2>Items for Sale</h2>

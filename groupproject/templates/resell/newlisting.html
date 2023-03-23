@@ -21,7 +21,7 @@
                 <div id="error">
                 </div>
                 <div id="form">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="formfield">
                             <input placeholder = " " type="text" id="name" name="name" required>
@@ -55,10 +55,10 @@
                             <input placeholder = " " type="text" id="price" name="price" required>
                             <label class="entryboxlabel" for="price">Price</label>
                         </div>
-                        <!-- <div class="formfield">
-                            <input type="file" accept=".jpg,.jpeg,.png" id="image" name="image" required>
-                            <label for="image">Image</label>
-                        </div> -->
+                        <div class="formfield">
+                            <input type="file" accept=".jpg,.jpeg,.png" id="id_image" name="image" required>
+                            <label class="entryboxlabel" for="image">Image</label>
+                        </div>
                         <div class="formfield">
                             <input placeholder = " " type="text" id="description" name="description" required>
                             <label class="entryboxlabel" for="description">Description</label>

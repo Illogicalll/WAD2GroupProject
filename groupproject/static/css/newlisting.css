@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 #signupbg {
     position: fixed;
     width: 100%;
@@ -82,7 +86,7 @@
     text-align: center;
 }
 
-input[type="text"] {
+input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -95,9 +99,10 @@ input[type="text"] {
     font-family: 'Ubuntu', sans-serif;
 }
 
+
 .entryboxlabel {
     position: relative;
-    top: -2.4rem;
+    top: -2.6rem;
     padding: 0 0.5rem;
     pointer-events: none;
     color: rgb(163, 161, 161);
@@ -110,7 +115,7 @@ input[type="text"] {
 
 .formfield input:focus + .entryboxlabel,
 .formfield input:not(:placeholder-shown) + .entryboxlabel {
-    top: -3.8rem;
+    top: -3.9rem;
     font-size: 0.8em;
 }
 

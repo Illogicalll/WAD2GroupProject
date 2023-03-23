@@ -19,7 +19,7 @@
                     <h1>Sign Up</h1>
                 </div>
                 <div id="form">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="formfield">
                             <input placeholder = " " type="text" id="username" name="username" required>
@@ -36,6 +36,10 @@
                         <div class="formfield">
                             <input placeholder = " " type="text" id="phone_number" name="phone_number" required>
                             <label for="phone_number">Phone Number</label>
+                        </div>
+                        <div class="formfield">
+                            <input type="file" accept=".jpg,.jpeg,.png" id="profilepicture" name="profilepicture" required>
+                            <label for="profilepicture">Profile Picture</label>
                         </div>
                         <div class="formfield">
                             <input placeholder = " " type="password" id="password1" name="password1" required>
