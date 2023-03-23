@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from resell.forms import UserCreationForm, LoginForm, ListingCreationForm, ProductFilterForm
-from resell.models import Product,CustomUser
+from resell.models import Product,CustomUser,Wishlist
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.views.generic import ListView
@@ -146,3 +146,17 @@ def newlisting(request):
 
 def listingsuccess(request):
     return render(request,'resell/listingsuccess.html')
+
+def wishlist(request,profile_id):
+    exists = False
+    try:
+        thisUser = CustomUser.objects.get(user_id=profile_id)
+        exists = True
+    except CustomUser.DoesNotExist:
+        thisUser = None
+    if exists:
+        wishlist = Wishlist.objects.filter(user=profile_id)
+    else:
+        wishlist = None
+
+    return render(request, 'resell/wishlist.html', {'wishlist':wishlist,'user':thisUser})
