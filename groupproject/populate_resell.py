@@ -18,8 +18,8 @@ def populate():
     {"name": "Fashion", "slug": "Fashion"},
     {"name": "Books", "slug": "books"},
     {"name": "Home & Garden", "slug": "home-and-garden"},
-    {"name": "Toys & Games", "slug": "toys-and-games"}
-    {"name": "Health & Beauty","slug":"healyh-and-beauty"}
+    {"name": "Toys & Games", "slug": "toys-and-games"},
+    {"name": "Health & Beauty","slug":"healyh-and-beauty"},
     {"name": "Music & Movies","slug":"music-and-movies"}
     ]
 
@@ -33,8 +33,8 @@ def populate():
     {"name": "Sofa", "category": "Home & Garden", "brand": "Ikea", "condition": "Used", "price": 400},
     {"name": "Bed", "category": "Home & Garden", "brand": "Pottery Barn", "condition": "Brand New", "price": 800},
     {"name": "Legos", "category": "Toys & Games", "brand": "Lego", "condition": "Brand New", "price": 50},
-    {"name": "Board Game", "category": "Toys & Games", "brand": "Hasbro", "condition": "Open Not Used", "price": 30}
-    {"name": "Patulin", "category": "Health & Beauty", "brand": "GlaxoSmithKline","condition": "Brand New", "price": 12}
+    {"name": "Board Game", "category": "Toys & Games", "brand": "Hasbro", "condition": "Open Not Used", "price": 30},
+    {"name": "Patulin", "category": "Health & Beauty", "brand": "GlaxoSmithKline","condition": "Brand New", "price": 12},
     {"name": "Music CD", "category": "Music & Movies", "brand": "Unkonwn","condition": "Used", "price": 20}
 ]
 
@@ -44,7 +44,6 @@ def populate():
             slug=category["slug"],
             cateID=random.randint(1,1000)
         )
-
 
     for product in products:
         category = Category.objects.get(cateName=product["category"])

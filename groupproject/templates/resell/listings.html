@@ -1,15 +1,16 @@
 {% extends 'resell/base.html' %}
-<!DOCTYPE html>
-
 {% load static %}
 
-
-    {% block title_block %}
-        Item
-    {% endblock %}
-
-    {% block cssLink_block %}
-    {% endblock %}
+{% block head_block%}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        Listings
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
+{% endblock %}
 
     {% block body_block %}
 
@@ -36,7 +37,10 @@
         {% empty %}
             <p>Sorry, no listings found.</p>
         {% endfor %}
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="{% static 'js/indexbg.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{% static 'js/about.js' %}"></script>
 
     {% endblock %}
-</html>
