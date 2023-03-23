@@ -148,16 +148,17 @@ def newlisting(request):
 def listingsuccess(request):
     return render(request,'resell/listingsuccess.html')
 
+@login_required(login_url='../login/')
 def wishlist(request):
     exists = False
     user = request.user
     try:
-        thisUser = CustomUser.objects.get(user=user.user_id)
+        thisUser = CustomUser.objects.get(user_id=user.user_id)
         exists = True
     except CustomUser.DoesNotExist:
         thisUser = None
     if exists:
-        wishlistItem = Wishlist.objects.filter(user=user.user_id)
+        wishlistItem = Wishlist.objects.filter(user_id=user.user_id)
         products = []
         for item in wishlistItem:
                 product = model_to_dict(item.Product)
