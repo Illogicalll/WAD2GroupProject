@@ -43,11 +43,11 @@ class CustomUser(AbstractBaseUser):
 	joined_on = models.DateField(auto_now=True)
 	is_active = models.BooleanField(_('active'), default=True)
 	is_admin = models.BooleanField(_('admin'), default=False)
-	# profile_picture = models.ImageField(null=True, blank=True, upload_to='static/pfps')
+	profilepicture = models.ImageField(_('profilepicture'), upload_to = "profiles", blank=True, null=True)
 	objects = CustomUserManager()
 
 	USERNAME_FIELD = 'username'
-	REQUIRED_FIELDS = ['first_name', 'last_name', 'user_id', 'phone_number']
+	REQUIRED_FIELDS = ['first_name', 'last_name', 'user_id', 'phone_number', 'profilepicture']
 
 	def __str__(self):
 		return self.username
@@ -62,12 +62,13 @@ class CustomUser(AbstractBaseUser):
 	def is_staff(self):
 		return self.is_admin
 
-	# @property
-	# def pfp(self):
-	# 	if self.profile_picture and hasattr(self.profile_picture, 'url'):
-	# 		return self.profile_picture.url
-	# 	else:
-	# 		return "/media/profile_pictures/user.png"
+	@property
+	def pfp(self):
+		try:
+			print(self.profilepicture.url)
+			return True
+		except:
+			return False
 
 	def save(self, *args, **kwargs):
 		if not self.pk:
@@ -126,14 +127,15 @@ class Product(models.Model):
 	def __str__(self):
 		return self.name
 
-	def save(self, user_id, *args, **kwargs):
+	def save(self, user_id=None, *args, **kwargs):
 		if not self.pk:
 			last_product = Product.objects.all().order_by('-product_id').first()
 			if last_product:
 				self.product_id = last_product.product_id + 1
 			else:
 				self.product_id = 1
-			self.user_id = user_id
+			if user_id:
+				self.user_id = user_id
 			super().save(*args, **kwargs)
 	
 class Wishlist(models.Model):
