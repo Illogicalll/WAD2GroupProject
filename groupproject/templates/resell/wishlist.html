@@ -16,7 +16,7 @@
                 {% if user %}
                 <h1>Your Wishlist</h1>
                 <div class="items">
-                    {% for item in wishlist %}
+                    {% for product in products %}
                         <p>{{ product.name }}</p>
                         <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
                         <p id="price">£{{ product.price }}</p>

@@ -8,6 +8,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.views.generic import ListView
 from django.db.models import Q
+from django.forms.models import model_to_dict
 
 # Create your views here.
 
@@ -150,14 +151,22 @@ def listingsuccess(request):
 @login_required(login_url='../login/')
 def wishlist(request):
     exists = False
+    user = request.user
     try:
-        thisUser = CustomUser.objects.get(user_id=request.user.user_id)
+        thisUser = CustomUser.objects.get(user_id=user.user_id)
         exists = True
     except CustomUser.DoesNotExist:
         thisUser = None
     if exists:
-        wishlist = Wishlist.objects.filter(user=request.user)
+        wishlistItem = Wishlist.objects.filter(user=user.user_id)
+        print(wishlistItem)
+        products = []
+        for item in wishlistItem:
+            product = model_to_dict(item.Product)
+            products.append(product)
+            
+        print(products)
     else:
-        wishlist = None
+        products = None
 
-    return render(request, 'resell/wishlist.html', {'wishlist':wishlist,'user':thisUser})
+    return render(request, 'resell/wishlist.html', {'products':products,'user':thisUser})
