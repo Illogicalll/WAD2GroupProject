@@ -21,7 +21,7 @@ def about(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreationForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             new_user = authenticate(username=form.cleaned_data['username'],
