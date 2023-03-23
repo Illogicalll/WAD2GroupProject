@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-7hd5@y4#$k(din3x0bfbhesq-l4($^=wy1)36qou+by1((daiy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['willm.pythonanywhere.com']
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'

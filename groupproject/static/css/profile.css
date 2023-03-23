@@ -111,3 +111,7 @@ body {
 ::-webkit-scrollbar {
     opacity: 0;
 }
+
+img {
+    margin: 0 auto;
+}
