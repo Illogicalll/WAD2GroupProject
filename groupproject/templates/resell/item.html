@@ -3,11 +3,53 @@
 {% load static %}
 
 <html>
-    <head>
-        <title>Item</title>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Item: {{ product.product_id }}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'css/profile.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
+</head>
 
-    <body>
-        <p>{{ item.name }}</p>
-    </body>
+<body style="background-color:black">
+<div id="profilebg">
+    <div class="product">
+        {% if product %}
+        <h1>{{ product.name}}</h1>
+        <p>{{ product.description}}</p>
+        <div class="items">
+
+            <div class="formfield">
+                <select id="paymentoption">
+                    <option value="">--Please Choose a Payment option--</option>
+                    <option value="">Card</option>
+                    <option value="">Cash</option>
+                    <option value="">Paypal</option>
+                </select>
+                <label class="dropdownlabel" for="paymentoption">Payment Option</label>
+            </div>
+            <div class="button" role="button" data-url="{% url 'purchasesuccess' %}">
+                <div class="buttontext">
+                    <p>Purchase</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No listings found.</p>
+            {% endif %}
+        </div>
+        {% else %}
+        <h1 id="notfound">This Product Does Not Exist</h1>
+        {% endif %}
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="{% static 'js/indexbg.js' %}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'js/profile.js' %}" async defer></script>
+</body>
+
 </html>

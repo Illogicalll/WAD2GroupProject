@@ -147,6 +147,9 @@ def newlisting(request):
 def listingsuccess(request):
     return render(request,'resell/listingsuccess.html')
 
+def purchasesuccess(request):
+    return render(request,'resell/purchasesuccess.html')
+
 def wishlist(request,profile_id):
     exists = False
     try:
@@ -160,3 +163,11 @@ def wishlist(request,profile_id):
         wishlist = None
 
     return render(request, 'resell/wishlist.html', {'wishlist':wishlist,'user':thisUser})
+
+def purchase(request,product_id):
+    try:
+        item = Product.objects.get(product_id=product_id)
+    except Product.DoesNotExist:
+        item = None
+
+    return render(request, 'resell/purchase', {'item':item})

@@ -25,8 +25,10 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('signupsuccess/', views.signupsuccess, name='signupsuccess'),
     path('loginsuccess/', views.loginsuccess, name='loginsuccess'),
+    path('purchasesuccess/', views.purchasesuccess, name='purchasesuccess'),
     path('admin/', admin.site.urls),
     path('item/<int:product_id>', views.item, name='item'),
+    path('purchase/<int:product_id>', views.purchase, name='purchase')
     path('profile/<int:profile_id>', views.profile, name='profile'),
     path('listings/', views.buy.as_view(), name='listings'),
     path('profile', views.myprofile, name='myprofile'),

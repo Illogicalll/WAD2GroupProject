@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Purchase successful</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
+    <link href="{% static 'css/loginsuccess.css' %}" rel="stylesheet">
+</head>
+
+<body style="background-color:black">
+<div id="successbg">
+    <div id="success" data-url="{% url 'index' %}">
+        <div id="title">
+            <h1>Purchase Successful!</h1>
+        </div>
+        <div id="desc">
+            <p>Taking you back home...</p>
+        </div>
+        <div id="spinner"></div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="{% static 'js/indexbg.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'js/loginsuccess.js' %}"></script>
+</body>
+
+</html>
