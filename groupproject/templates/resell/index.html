@@ -1,15 +1,20 @@
-{% extends 'resell/base.html' %}
+<!DOCTYPE html>
 {% load static %}
 
-
-    {% block title_block %}
+<html>
+<head>
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
         Home
-    {% endblock%}
-    {% block cssLink_block %}
-        <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    {% endblock %}
+ </title>
+ <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+</head>
 
-    {% block body_block %}
+
     <body style="background-color:black">
         <div class="navbar"></div>
         {% if user.is_authenticated %}
@@ -32,7 +37,6 @@
             </div>
         </div>
         {% endif %}
-        {% endif $}
         <div id="bg">
             <div class="options">
                 <div id="buttons">
@@ -66,5 +70,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="{% static 'js/index.js' %}" async defer></script>
     </body>
-    {% endblock %}
+</html>
 
