@@ -136,7 +136,7 @@ def checkout(request):
 @login_required(login_url='../login/')
 def newlisting(request):
     if request.method == 'POST':
-        form = ListingCreationForm(request.POST)
+        form = ListingCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save(user_id=request.user.user_id)
             return redirect('../listingsuccess/')

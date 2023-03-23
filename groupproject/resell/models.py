@@ -118,7 +118,7 @@ class Product(models.Model):
 	condition = models.CharField(_('condition'), max_length=50, blank=True, choices = PRODUCT_CONDITION)
 	price = models.PositiveIntegerField(_('price'), blank=True, default=0)
 	description = models.TextField(_('description'), blank=True, default="")
-	image = models.ImageField(_('image'), upload_to = "products")
+	image = models.ImageField(_('image'), upload_to = "products", blank=True, null=True)
 	view_count = models.PositiveIntegerField(default=0)
 
 	REQUIRED_FIELDS = ['name', 'brand','category', 'condition', 'price', 'description']
