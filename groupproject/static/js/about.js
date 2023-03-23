@@ -24,5 +24,5 @@ tl.fromTo('#desc', {y:20}, {y:0, duration: 1}, '<');
 tl.fromTo('.button', {opacity: 0}, {opacity: 1, duration:2}, '<40%');
 
 $("#back").click(function() {
-            window.location.href = $("#back").attr("data-url")
-        });
+    window.location.href = $("#back").attr("data-url")
+});
