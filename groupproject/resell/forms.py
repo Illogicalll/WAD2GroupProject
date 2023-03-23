@@ -55,10 +55,11 @@ class ListingCreationForm(forms.ModelForm):
         self.fields['condition'].required = True
         self.fields['price'].required = True
         self.fields['description'].required = True
+        self.fields['image'].required = True
 
     class Meta:
         model = Product
-        fields = ('name', 'brand', 'category' , 'condition', 'price', 'description')
+        fields = ('name', 'brand', 'category' , 'condition', 'price', 'description', 'image')
 
     def save(self, user_id, commit=True):
         product = super().save(commit=False)
