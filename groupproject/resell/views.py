@@ -168,8 +168,6 @@ def wishlist(request):
 
     return render(request, 'resell/wishlist.html', {'products':products,'user':thisUser})
 
-def purchase(request):
-    return render(request)
-
+@login_required
 def purchasesuccess(request):
     return render(request)
