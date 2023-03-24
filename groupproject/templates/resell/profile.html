@@ -30,7 +30,7 @@
                     {% if listings %}
                         {% for listing in listings %}
                             <p>{{ listing.name }}</p>
-                            <div class="button" role="button" data-url="{% url 'item' listing.product_id %}">
+                            <div class="profilebutton" role="button" data-url="{% url 'item' listing.product_id %}">
                                 <div class="buttontext">
                                     <p>View</p>
                                 </div>
@@ -43,7 +43,12 @@
                 {% else %}
                 <h1 id="notfound">This User Does Not Exist</h1>
                 {% endif %}
-              </div>
+            </div>
+            <div class="button" role="button" data-url="{% url 'index' %}">
+                <div class="buttontext">
+                    <p>Home</p>
+                </div>
+            </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
         <script src="{% static 'js/indexbg.js' %}"></script>
