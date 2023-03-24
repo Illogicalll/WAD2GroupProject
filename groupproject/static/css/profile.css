@@ -116,8 +116,6 @@ body {
     width: 150px;
     border-radius: 10px;
     cursor: pointer;
-    left: 50%;
-    top: 60%;
     transform: translateX(-50%);
     margin-top: 150px;
 }
@@ -148,4 +146,29 @@ body {
 
 img {
     margin: 0 auto;
+}
+
+#twobuttons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    left: 40%;
+    bottom: 15%;
+    width: 30%;
+}
+
+#twobuttons p {
+    position: relative;
+    color: white;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#onebutton {
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
 }

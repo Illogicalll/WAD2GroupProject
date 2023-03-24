@@ -14,12 +14,12 @@
 
     <body style="background-color:black">
         <div id="successbg">
-            <div id="success" data-url="{% url 'index' %}">
+            <div id="success" data-url="{% url 'profile' user.user_id %}">
                 <div id="title">
                     <h1>Success!</h1>
                 </div>
                 <div id="desc">
-                    <p>Taking you back home...</p>
+                    <p>Taking you back to your profile...</p>
                 </div>
                 <div id="spinner"></div>
             </div>
