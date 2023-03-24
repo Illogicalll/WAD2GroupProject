@@ -96,13 +96,16 @@ PRODUCT_CONDITION = (
 	("Signs of Usage", "Signs of Usage"),
 	("Broken/For Parts Only", "Broken/For Parts Only"),
 )
+PRODUCT_CATEGORY = [
+    ("Electronics","Electronics"),
+    ("Fashion","Fashion"),
+    ("Books","Books"),
+    ("Home & Garden","Home & Garden"),
+    ("Toys & Games","Toys & Games"),
+    ("Health & Beauty","Health & Beauty"),
+    ("Music & Movies","Music & Movies"),
+    ]
 
-PRODUCT_CATEGORY = (
-	("Home and Furniture", "Home and Furniture"),
-	("Technology", "Technology"),
-	("Clothing", "Clothing"),
-	("Other", "Other"),
-)
 
 class Product(models.Model):
 	product_id = models.PositiveIntegerField(_('id'), unique = True, default=0)
