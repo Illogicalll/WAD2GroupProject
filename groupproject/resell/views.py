@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from resell.forms import UserCreationForm, LoginForm, ListingCreationForm, ProductFilterForm
+from resell.forms import UserCreationForm, UserChangeForm, LoginForm, ListingCreationForm, ProductFilterForm
 from resell.models import Product,CustomUser,Wishlist
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -35,6 +35,21 @@ def signup(request):
 
 def signupsuccess(request):
     return render(request, 'resell/signupsuccess.html')
+
+
+@login_required(login_url='../login/')
+def editprofile(request):
+    if request.method == 'POST':
+        form = UserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('../editprofilesuccess/')
+    else:
+        form = UserChangeForm()
+    return render(request, 'resell/editprofile.html', {'form': form})
+
+def editprofilesuccess(request):
+    return render(request, 'resell/editprofilesuccess.html')
 
 def loginsuccess(request):
     return render(request, 'resell/loginsuccess.html')
@@ -126,9 +141,6 @@ def logout(request):
     auth_logout(request)
     return render(request, 'resell/logoutsuccess.html')
 
-@login_required(login_url='../login/')
-def editprofile(request):
-    return render(request,'resell/editprofile.html')
 
 @login_required(login_url='../login/')
 def checkout(request):

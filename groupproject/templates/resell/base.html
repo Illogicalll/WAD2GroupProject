@@ -44,6 +44,9 @@
           <a class="nav-link" href="{% url 'profile' user.user_id %}">My Profile</a>
         </li>
         <li>
+          <a class="nav-link" href="{% url 'editprofile' %}">Edit Profile</a>
+        </li>
+        <li>
           <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
         </li>
         {% else %}
