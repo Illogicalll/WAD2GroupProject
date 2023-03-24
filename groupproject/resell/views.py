@@ -94,13 +94,19 @@ def login(request):
 def item(request,product_id):
     seller = None
     sellerisviewer = None
+    loggedin = False
+
     try:
         item = Product.objects.get(product_id=product_id)
         seller = CustomUser.objects.get(user_id=item.user_id)
-        sellerisviewer = request.user.user_id == seller.user_id
+        if request.user.is_authenticated:
+            request.session['product_id'] = product_id
+            sellerisviewer = request.user.user_id == seller.user_id
+            loggedin = True
     except Product.DoesNotExist:
         item = None
-    return render(request, 'resell/item.html', {'item':item,'seller':seller,'ownitem':sellerisviewer})
+
+    return render(request, 'resell/item.html', {'item':item,'seller':seller,'ownitem':sellerisviewer,'loggedin':loggedin})
 
 def login(request):
     if request.method == 'POST':
@@ -187,4 +193,9 @@ def wishlist(request):
 
 @login_required
 def purchasesuccess(request):
+    if 'product_id' in request.session:
+        product_id = request.session['product_id']
+
+    Product.objects.filter(product_id=product_id).delete()
+
     return render(request,'resell/purchasesuccess.html')
