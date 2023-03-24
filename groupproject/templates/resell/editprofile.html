@@ -19,7 +19,7 @@
                     <h1>Edit Profile</h1>
                 </div>
                 <div id="form">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="formfield">
                             <input placeholder = " " type="text" id="first_name" name="first_name">
