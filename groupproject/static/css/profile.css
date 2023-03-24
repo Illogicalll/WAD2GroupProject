@@ -14,8 +14,8 @@ body {
     flex-direction: column;
     height: 100vh;
     position: absolute;
-    bottom: 50%;
-    left: 50%;
+    bottom: 55%;
+    left: 47%;
     transform: translate(-50%, 50%);
     width: 100%;
     height: 70%;
@@ -27,6 +27,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     overflow-y: scroll;
+    scale: 0.85;
 }
 
 #notfound {
@@ -69,8 +70,8 @@ body {
     margin-bottom: 10px;
 }
 
-.button {
-    position: relative;
+.profilebutton {
+    position: absolute;
     background-color: black;
     height: 30px;
     width: 100px;
@@ -80,7 +81,7 @@ body {
     cursor: pointer;
 }
 
-.button::before {
+.profilebutton::before {
     position: absolute;
     border-radius: inherit;
     content: "";
@@ -94,7 +95,7 @@ body {
     border: 1px solid black;
 }
 
-.button:hover::before {
+.profilebutton:hover::before {
     background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
     opacity: 1;
     border: 1px solid white;
@@ -106,6 +107,39 @@ body {
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
+}
+
+.button {
+    position: relative;
+    background-color: black;
+    height: 60px;
+    width: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+    left: 50%;
+    top: 60%;
+    transform: translateX(-50%);
+    margin-top: 150px;
+}
+
+.button::before {
+    position: absolute;
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    opacity: 0.1;
+    transition: opacity 500ms;
+    border: 1px solid white;
+}
+
+.button:hover::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
+    opacity: 1;
+    border: 1px solid greenyellow;
 }
 
 ::-webkit-scrollbar {

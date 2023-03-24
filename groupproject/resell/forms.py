@@ -36,7 +36,13 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+class UserChangeForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'phone_number', 'profilepicture')
 
+    def get_object(self):
+        return self.request.user
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username')
     password = forms.CharField(widget=forms.PasswordInput, label='Password')

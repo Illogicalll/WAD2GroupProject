@@ -1,9 +1,7 @@
-<!DOCTYPE html>
+{% extends 'resell/base.html' %}
 {% load static %}
 
-
-<html>
-    <head>
+{% block head_block%}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>New Listing</title>
@@ -11,8 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="{% static 'media/logo.ico' %}"/>
         <link href="{% static 'css/newlisting.css' %}" rel="stylesheet">
-    </head>
+{% endblock %}
 
+{% block body_block %}
     <body style="background-color:black">
         <div id="newlistingbg">
             <div id="signup">
@@ -84,5 +83,4 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="{% static 'js/newlisting.js' %}"></script>
     </body>
-
-</html>
+{% endblock %}

@@ -17,6 +17,7 @@ body {
     z-index: 1;
     width: 100%;
     height: 100vh;
+    scale: 0.8;
 }
 
 #title {
@@ -169,3 +170,4 @@ select:focus {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.3em;
 }
+
