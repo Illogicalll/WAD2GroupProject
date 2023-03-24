@@ -27,20 +27,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="formfield">
-                    <select id="paymentoption" name="paymentoption" required>
-                        <option value="">--Please Choose a Payment Option--</option>
-                        <option value="Card">Card</option>
-                        <option value="Cash">Cash</option>
-                        <option value="PayPal">PayPal</option>
-                    </select>
-                    <label class="dropdownlabel" for="paymentoption">Payment Option</label>
-                    <div class="button" role="button" data-url="{% url 'purchasesuccess' %}">
-                        <div class="buttontext">
-                            <p>Purchase</p>
+                {% if ownitem %}
+                    <h1 id="cantbuy">Can't Buy Own Item</h1>
+                {% else %}
+                    <div class="formfield">
+                        <select id="paymentoption" name="paymentoption" required>
+                            <option value="">--Please Choose a Payment Option--</option>
+                            <option value="Card">Card</option>
+                            <option value="Cash">Cash</option>
+                            <option value="PayPal">PayPal</option>
+                        </select>
+                        <label class="dropdownlabel" for="paymentoption">Payment Option</label>
+                        <div class="button" role="button" data-url="{% url 'purchasesuccess' %}">
+                            <div class="buttontext">
+                                <p>Purchase</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         {% else %}
             <h1 id="notfound">This Item Does Not Exist...</h1>

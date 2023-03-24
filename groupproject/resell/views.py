@@ -93,12 +93,14 @@ def login(request):
 
 def item(request,product_id):
     seller = None
+    sellerisviewer = None
     try:
         item = Product.objects.get(product_id=product_id)
         seller = CustomUser.objects.get(user_id=item.user_id)
+        sellerisviewer = request.user.user_id == seller.user_id
     except Product.DoesNotExist:
         item = None
-    return render(request, 'resell/item.html', {'item':item,'seller':seller})
+    return render(request, 'resell/item.html', {'item':item,'seller':seller,'ownitem':sellerisviewer})
 
 def login(request):
     if request.method == 'POST':
