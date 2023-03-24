@@ -144,3 +144,8 @@ select:focus {
     transform: translateX(-50%);
     width: 75px;
 }
+
+#purchase{
+    position: absolute;
+    left: 72.8%;
+}
