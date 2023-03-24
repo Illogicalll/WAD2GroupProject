@@ -1,6 +1,6 @@
 from django import forms
 from django.db import models
-from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import CustomUser
 from .models import CustomUser, Product
 from django.contrib.auth import get_user_model
@@ -40,6 +40,15 @@ class UserCreationForm(forms.ModelForm):
         return user
 
 
+class UserChangeForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'phone_number')
+
+    def get_object(self):
+        return self.request.user
+
+
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username')
     password = forms.CharField(widget=forms.PasswordInput, label='Password')
@@ -71,8 +80,8 @@ class ProductFilterForm(forms.Form):
     category_choices = Product.objects.values_list('category', 'category').distinct()
     condition_choices = Product.objects.values_list('condition', 'condition').distinct()
     search = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Search...'}),required = False)
-    category = forms.ChoiceField(choices=[('', 'All')] + list(category_choices), required=False)
-    condition = forms.ChoiceField(choices=[('', 'All')] + list(condition_choices), required=False)
+    # category = forms.ChoiceField(choices=[('', 'All')] + list(category_choices), required=False)
+    # condition = forms.ChoiceField(choices=[('', 'All')] + list(condition_choices), required=False)
     sort = forms.ChoiceField(choices=[('','Default'),
                                         ('Highest Price', 'Highest Price'),
                                         ('Lowest Price', 'Lowest Price')], required = False)
