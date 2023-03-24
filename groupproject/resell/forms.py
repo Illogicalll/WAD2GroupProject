@@ -1,6 +1,6 @@
 from django import forms
 from django.db import models
-from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import CustomUser
 from .models import CustomUser, Product
 from django.contrib.auth import get_user_model
@@ -75,8 +75,8 @@ class ProductFilterForm(forms.Form):
     category_choices = Product.objects.values_list('category', 'category').distinct()
     condition_choices = Product.objects.values_list('condition', 'condition').distinct()
     search = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Search...'}),required = False)
-    category = forms.ChoiceField(choices=[('', 'All')] + list(category_choices), required=False)
-    condition = forms.ChoiceField(choices=[('', 'All')] + list(condition_choices), required=False)
+    #category = forms.ChoiceField(choices=[('', 'All')] + list(category_choices), required=False)
+    #condition = forms.ChoiceField(choices=[('', 'All')] + list(condition_choices), required=False)
     sort = forms.ChoiceField(choices=[('','--Please Choose a Sorting Method--'),
                                         ('Highest Price', 'Highest Price'),
                                         ('Lowest Price', 'Lowest Price')], required = False)

@@ -184,4 +184,4 @@ def wishlist(request):
 
 @login_required
 def purchasesuccess(request):
-    return render(request)
+    return render(request,'resell/purchasesuccess.html')
