@@ -21,7 +21,7 @@ def about(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST,request.FILES)
+        form = UserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             new_user = authenticate(username=form.cleaned_data['username'],
@@ -92,12 +92,13 @@ def login(request):
     return render(request, 'resell/login.html')
 
 def item(request,product_id):
+    seller = None
     try:
         item = Product.objects.get(product_id=product_id)
+        seller = CustomUser.objects.get(user_id=item.user_id)
     except Product.DoesNotExist:
         item = None
-
-    return render(request, 'resell/item.html', {'item':item})
+    return render(request, 'resell/item.html', {'item':item,'seller':seller})
 
 def login(request):
     if request.method == 'POST':
