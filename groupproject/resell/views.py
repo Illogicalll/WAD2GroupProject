@@ -94,13 +94,19 @@ def login(request):
 def item(request,product_id):
     seller = None
     sellerisviewer = None
+    isinwishlist = None
     try:
         item = Product.objects.get(product_id=product_id)
         seller = CustomUser.objects.get(user_id=item.user_id)
         sellerisviewer = request.user.user_id == seller.user_id
     except Product.DoesNotExist:
         item = None
-    return render(request, 'resell/item.html', {'item':item,'seller':seller,'ownitem':sellerisviewer})
+    try:
+        Wishlist.objects.get(user=request.user, Product_id=product_id)
+        isinwishlist = True
+    except:
+        pass
+    return render(request, 'resell/item.html', {'item':item,'seller':seller,'ownitem':sellerisviewer, 'inwishlist':isinwishlist})
 
 def login(request):
     if request.method == 'POST':
@@ -131,7 +137,6 @@ def profile(request,profile_id):
         listings = Product.objects.filter(user_id=profile_id)
     else:
         listings = None
-    print(valid)
     return render(request, 'resell/profile.html', {'user':thisUser, 'listings':listings, 'valid':not valid})
 
 @login_required(login_url='../login/')
@@ -188,3 +193,11 @@ def wishlist(request):
 @login_required
 def purchasesuccess(request):
     return render(request,'resell/purchasesuccess.html')
+
+def add_to_wishlist(request, product_id):
+    if request.user.is_authenticated:
+        wishlist_item = Wishlist(user=request.user, Product=Product.objects.get(product_id=product_id))
+        wishlist_item.save()
+        return redirect((f'../item/{product_id}'))
+    else:
+        return redirect((f'../item/{product_id}'))

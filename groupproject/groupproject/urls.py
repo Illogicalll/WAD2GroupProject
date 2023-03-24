@@ -39,5 +39,6 @@ urlpatterns = [
     path('wishlist/', views.wishlist, name='wishlist'),
     path('editprofile/', views.editprofile, name='editprofile'),
     path('editprofilesuccess/', views.editprofilesuccess, name='editprofilesuccess'),
+    path('itemaddsuccess/<int:product_id>', views.add_to_wishlist, name='itemaddsuccess'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

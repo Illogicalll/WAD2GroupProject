@@ -146,7 +146,6 @@ class Wishlist(models.Model):
 
 	def __str__(self):
 		return "Wishlist" + str(self.id)
-	 
 
 ORDER_STATUS = (
 	("Order Resived", "Order Resived"),
