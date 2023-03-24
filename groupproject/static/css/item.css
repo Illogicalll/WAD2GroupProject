@@ -136,3 +136,11 @@ select:focus {
     margin-left: -34.5%;
     width: 90px;
 }
+
+#back {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+    width: 75px;
+}

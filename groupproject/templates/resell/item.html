@@ -46,17 +46,15 @@
 
                     </div>
                 {% endif %}
-
-                <div class="button" role="button" data-url="{% url 'listings' %}">
-                    <div class="buttontext">
-                        <p>Back</p>
-                    </div>
-                </div>
-
             </div>
         {% else %}
             <h1 id="notfound">This Item Does Not Exist...</h1>
         {% endif %}
+        <div class="button" role="button" id="back" data-url="{% url 'listings' %}">
+            <div class="buttontext">
+                <p>Back</p>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
