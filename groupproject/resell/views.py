@@ -94,7 +94,7 @@ def login(request):
 def item(request,product_id):
     seller = None
     sellerisviewer = None
-    isinwishlist = None
+    isinwishlist = False
     loggedin = False
 
     try:
@@ -107,8 +107,8 @@ def item(request,product_id):
     except Product.DoesNotExist:
         item = None
     try:
-        Wishlist.objects.get(user=request.user, Product_id=product_id)
-        isinwishlist = True
+        if Wishlist.objects.filter(user=request.user, Product=item).exists():
+            isinwishlist = True
     except:
         pass
 
@@ -186,7 +186,7 @@ def wishlist(request):
     except CustomUser.DoesNotExist:
         thisUser = None
     if exists:
-        wishlistItem = Wishlist.objects.filter(user_id=user.user_id)
+        wishlistItem = Wishlist.objects.filter(user=user)
         products = []
         for item in wishlistItem:
                 product = model_to_dict(item.Product)
@@ -221,6 +221,6 @@ def removefromwishlist(request):
     if 'product_id' in request.session:
         product_id = request.session['product_id']
 
-    Wishlist.objects.filter(product_id=product_id).delete()
+    Wishlist.objects.filter(Product=Product.objects.get(product_id=product_id)).delete()
 
     return render(request,'resell/wishlist.html')
