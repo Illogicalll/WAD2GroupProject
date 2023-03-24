@@ -213,3 +213,5 @@ def add_to_wishlist(request, product_id):
     else:
         return redirect((f'../item/{product_id}'))
     
+def itemaddtowishlistsuccess(request):
+    return render(request,'resell/itemaddsuccess.html')
