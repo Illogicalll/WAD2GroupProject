@@ -15,7 +15,7 @@ body {
     height: 100vh;
     position: absolute;
     bottom: 55%;
-    left: 50%;
+    left: 47%;
     transform: translate(-50%, 50%);
     width: 100%;
     height: 70%;
@@ -27,6 +27,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     overflow-y: scroll;
+    scale: 0.85;
 }
 
 #notfound {
@@ -116,7 +117,7 @@ body {
     border-radius: 10px;
     cursor: pointer;
     left: 50%;
-    top: 70%;
+    top: 60%;
     transform: translateX(-50%);
     margin-top: 150px;
 }
