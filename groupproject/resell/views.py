@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from resell.forms import UserCreationForm, UserChangeForm, LoginForm, ListingCreationForm, ProductFilterForm
 from resell.models import Product,CustomUser,Wishlist
@@ -40,7 +40,7 @@ def signupsuccess(request):
 @login_required(login_url='../login/')
 def editprofile(request):
     if request.method == 'POST':
-        form = UserChangeForm(request.POST, instance=request.user)
+        form = UserChangeForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('../editprofilesuccess/')
