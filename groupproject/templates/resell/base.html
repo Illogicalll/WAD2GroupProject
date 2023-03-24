@@ -18,7 +18,7 @@
   {% endblock %}
 </head>
 <body>
-  <div>
+  <div class="container">
   <nav class="navbar navbar-expand-md navbar-dark bg-black">
     <a
       href="{% url 'index' %}"
@@ -41,13 +41,13 @@
       <ul class="navbar-nav ms-auto text-center">
         {% if user.is_authenticated %}
         <li>
-          <a class="nav-link" href="{% url 'profile' user.user_id %}">My Profile</a>
+          <a style="color: greenyellow" class="nav-link" href="{% url 'profile' user.user_id %}">My Profile</a>
         </li>
         <li>
-          <a class="nav-link" href="{% url 'editprofile' %}">Edit Profile</a>
+          <a style="color: greenyellow" class="nav-link" href="{% url 'editprofile' %}">Edit Profile</a>
         </li>
         <li>
-          <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
+          <a style="color: greenyellow" class="nav-link" href="{% url 'logout' %}">Sign Out</a>
         </li>
         {% else %}
         <li>
