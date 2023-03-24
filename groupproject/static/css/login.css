@@ -1,3 +1,9 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    color: white;
+}
+
 #bg {
     position: fixed;
     width: 100%;
@@ -26,83 +32,22 @@
 }
 
 #title {
-    font-family: 'Ubuntu', sans-serif;
-    text-align: center;
-    color: white;
     font-size: 1.5em;
     padding-left: 50px;
     padding-right: 50px;
     background: rgba(0, 0, 0, 0.8);
 }
 
-.button {
-    position: relative;
-    background-color: black;
-    height: 60px;
-    width: 150px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.button::before {
-    position: absolute;
-    border-radius: inherit;
-    content: "";
-    height: 100%;
-    width: 100%;
-    left: 0px;
-    top: 0px;
-    z-index: 2;
-    opacity: 0.1;
-    transition: opacity 500ms;
-    border: 1px solid white;
-}
-
-.button:hover::before {
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
-    opacity: 1;
-    border: 1px solid greenyellow;
-}
-
-.buttontext {
-    color: white;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 1.2em;
-    text-align: center;
-}
-
-#submit {
-    display: block;
-    margin: 0 auto;
-    height: 40px;
-    width: 130px;
-    line-height: 40px;
-}
-
 #textsection {
-    font-family: 'Ubuntu', sans-serif;
-    text-align: center;
-    color: white;
     padding-left: 50px;
     padding-right: 50px;
     background: rgba(0, 0, 0, 0.8);
-}
-
-#signupbutton {
-    display: block;
-    margin: 0 auto;
-    height: 40px;
-    width: 130px;
-    line-height: 40px;
 }
 
 #form {
     margin-top: -100px;
     display: grid;
     width: 300px;
-    font-family: 'Ubuntu', sans-serif;
-    color:white;
-    text-align: center;
 }
 
 input {
@@ -113,9 +58,8 @@ input {
     border: 2px solid grey;
     border-radius: 5px;
     background-color: black;
-    color: white;
     font-size: 0.8em;
-    font-family: 'Ubuntu', sans-serif;
+    color: white;
 }
 
 label {
@@ -148,4 +92,53 @@ input:hover {
 input:focus {
     border-color: greenyellow;
     transition-duration: 0.5s;
+}
+
+.button {
+    position: relative;
+    background-color: black;
+    height: 60px;
+    width: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button::before {
+    position: absolute;
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    opacity: 0.1;
+    transition: opacity 500ms;
+    border: 1px solid white;
+}
+
+.button:hover::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
+    opacity: 1;
+    border: 1px solid greenyellow;
+}
+
+.buttontext {
+    font-size: 1.2em;
+}
+
+#submit {
+    display: block;
+    margin: 0 auto;
+    height: 40px;
+    width: 130px;
+    line-height: 40px;
+}
+
+#signupbutton {
+    display: block;
+    margin: 0 auto;
+    height: 40px;
+    width: 130px;
+    line-height: 40px;
 }

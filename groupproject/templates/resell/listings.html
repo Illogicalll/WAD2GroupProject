@@ -44,10 +44,10 @@
                             </select>
                             <label class="dropdownlabel" for="condition">Sort</label>
                         </div>
-                    </div>
-                    <div class="formfield">
-                        <input placeholder = " " type="text" id="search" name="search" required>
-                        <label class="entryboxlabel" for="search">Search</label>
+                        <div class="formfield">
+                            <input placeholder = " " type="text" id="search" name="search" required>
+                            <label class="entryboxlabel" for="search">Search</label>
+                        </div>
                     </div>
                     <div class="button" role="button" id="submit" data-url="">
                         <div class="buttontext">
@@ -65,7 +65,7 @@
                                 <p id="price">£{{ product.price }}</p>
                             </div>
                         {% empty %}
-                            <p>Sorry, no listings found.</p>
+                            <p id="nothingfound">Sorry, no listings found.</p>
                         {% endfor %}
                     </div>
                 </div>
