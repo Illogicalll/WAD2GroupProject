@@ -17,12 +17,14 @@
                 <h1>Your Wishlist</h1>
                 <div class="items">
                     {% for product in products %}
-                        <p>{{ product.name }}</p>
-                        <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
-                        <p id="price">£{{ product.price }}</p>
-                        <div class="button" role="button" data-url="{% url 'listings' %}">
+                        <div>
+                            <p>{{ product.name }}</p>
+                            <img src="{{ MEDIA_URL}}{{ product.image }}" alt="Product Image" height="150" />
+                            <p id="price">£{{ product.price }}</p>
+                        </div>
+                        <div class="button" role="button" data-url="{% url 'item' product.product_id %}">
                             <div class="buttontext">
-                                <p>Find Things to Add</p>
+                                <p>View</p>
                             </div>
                         </div>
                     {% empty %}
