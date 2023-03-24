@@ -43,8 +43,16 @@
                                 <p>Purchase</p>
                             </div>
                         </div>
+
                     </div>
                 {% endif %}
+
+                <div class="button" role="button" data-url="{% url 'listings' %}">
+                    <div class="buttontext">
+                        <p>Back</p>
+                    </div>
+                </div>
+
             </div>
         {% else %}
             <h1 id="notfound">This Item Does Not Exist...</h1>
