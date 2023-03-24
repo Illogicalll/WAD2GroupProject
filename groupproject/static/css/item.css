@@ -126,7 +126,7 @@ select:focus {
 
 #sellerbutton {
     position: relative;
-    margin-left: -34.5%;
+    margin-left: -31%;
     width: 90px;
 }
 
@@ -140,7 +140,7 @@ select:focus {
 
 #wishlistbutton {
     width: 200px;
-    left: -25%;
+    left: -20%;
     margin-bottom: 10px;
 }
 
@@ -186,4 +186,9 @@ select:focus {
     font-size: 1.2em;
     left: 70%;
     top: 10%;
+}
+
+#purchase {
+    position: relative;
+    left: -27%;
 }
