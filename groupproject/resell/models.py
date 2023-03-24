@@ -80,12 +80,6 @@ class CustomUser(AbstractBaseUser):
 		super().save(*args, **kwargs)
 
 
-class Authentication_System(models.Model):
-	Email = models.CharField(max_length=100)
-	passWord = models.CharField(max_length=50)
-
-	def __str__(self):
-		return "AuthenSys: " + str(self)
 
 
 class Category(models.Model):
