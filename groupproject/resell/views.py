@@ -49,7 +49,7 @@ def editprofile(request):
     return render(request, 'resell/editprofile.html', {'form': form})
 
 def editprofilesuccess(request):
-    return render(request, 'resell/editprofilesuccess.html')
+    return render(request, 'resell/editprofilesuccess.html', {'user':request.user})
 
 def loginsuccess(request):
     return render(request, 'resell/loginsuccess.html')
@@ -117,25 +117,27 @@ def login(request):
     
 def profile(request,profile_id):
     exists = False
+    valid = False
     try:
         thisUser = CustomUser.objects.get(user_id=profile_id)
         exists = True
+        valid = profile_id == request.user.user_id
     except CustomUser.DoesNotExist:
         thisUser = None
     if exists:
         listings = Product.objects.filter(user_id=profile_id)
     else:
         listings = None
-    
-    return render(request, 'resell/profile.html', {'user':thisUser, 'listings':listings})
+    print(valid)
+    return render(request, 'resell/profile.html', {'user':thisUser, 'listings':listings, 'valid':not valid})
 
+@login_required(login_url='../login/')
 def myprofile(request):
     try:
         thisUser = CustomUser.objects.get(user_id=request.user.user_id)
     except CustomUser.DoesNotExist:
         thisUser= None
-    
-    return render(request, 'resell/profile.html',{'user':thisUser})
+    return render(request, 'resell/profile.html',{'user':thisUser, 'valid':True})
 
 def logout(request):
     auth_logout(request)

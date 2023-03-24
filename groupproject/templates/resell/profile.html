@@ -44,11 +44,24 @@
                 <h1 id="notfound">This User Does Not Exist</h1>
                 {% endif %}
             </div>
-            <div class="button" role="button" data-url="{% url 'index' %}">
-                <div class="buttontext">
-                    <p>Home</p>
+            {% if valid %}
+                <div id="onebutton">
+                    <div class="button" role="button" data-url="{% url 'index' %}">
+                        <div class="buttontext">
+                            <p>Home</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                <div id="twobuttons">
+                    <div class="button" role="button" data-url="{% url 'index' %}">
+                        <p>Home</p>
+                    </div>
+                    <div class="button" role="button" data-url="{% url 'editprofile' %}">
+                        <p>Edit Profile</p>
+                    </div>
+                </div>
+            {% endif %}
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
         <script src="{% static 'js/indexbg.js' %}"></script>
