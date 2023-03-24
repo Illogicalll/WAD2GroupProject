@@ -14,11 +14,10 @@
 </head>
 
 <body style="background-color:black">
-<div id="profilebg">
+<div id="itembg">
     <div class="product">
-        {% if product %}
-        <h1>{{ item.name}}</h1>
-        <p>{{ item.description}}</p>
+        <h1>{{ product.name}}</h1>
+        <p>{{ product.description}}</p>
         <div class="items">
 
             <div class="formfield">
@@ -35,13 +34,13 @@
                     <p>Purchase</p>
                 </div>
             </div>
-            {% else %}
-               <p>No listings found.</p>
-            {% endif %}
         </div>
         
-           <h1 id="notfound">This Product Does Not Exist</h1>
-        
+    </div>
+    <div class="button" role="button" data-url="{% url 'index' %}">
+        <div class="buttontext">
+            <p>Home</p>
+        </div>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
