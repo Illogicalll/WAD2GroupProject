@@ -215,3 +215,12 @@ def add_to_wishlist(request, product_id):
     
 def itemaddtowishlistsuccess(request):
     return render(request,'resell/itemaddsuccess.html')
+
+def removefromwishlist(request):
+
+    if 'product_id' in request.session:
+        product_id = request.session['product_id']
+
+    Wishlist.objects.filter(product_id=product_id).delete()
+
+    return render(request,'resell/wishlist.html')

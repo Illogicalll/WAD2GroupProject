@@ -26,6 +26,13 @@
                         <div class="inactivebutton" id="wishlistbutton" role="button" data-url="">
                             <p>Already in Wishlist</p>
                         </div>
+
+                        <div class="button" role="button" data-url="{% url 'removefromwishlist' product.product_id %}">
+                            <div class="buttontext">
+                                <p>Remove</p>
+                            </div>
+                        </div>
+
                     {% else %}
                         <div class="button" id="wishlistbutton" role="button" data-url="{% url 'itemaddsuccess' item.product_id %}">
                             <p>Add to Wishlist</p>
