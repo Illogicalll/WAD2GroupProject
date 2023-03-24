@@ -39,7 +39,7 @@ class UserCreationForm(forms.ModelForm):
 class UserChangeForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'phone_number')
+        fields = ('first_name', 'last_name', 'phone_number', 'profilepicture')
 
     def get_object(self):
         return self.request.user

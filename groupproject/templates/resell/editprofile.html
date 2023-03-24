@@ -22,16 +22,20 @@
                     <form method="post">
                         {% csrf_token %}
                         <div class="formfield">
-                            <input placeholder = " " type="text" id="first_name" name="first_name" required>
+                            <input placeholder = " " type="text" id="first_name" name="first_name">
                             <label for="first_name">First Name</label>
                         </div>
                         <div class="formfield">
-                            <input placeholder = " " type="text" id="last_name" name="last_name" required>
+                            <input placeholder = " " type="text" id="last_name" name="last_name">
                             <label for="last_name">Last Name</label>
                         </div>
                         <div class="formfield">
-                            <input placeholder = " " type="text" id="phone_number" name="phone_number" required>
+                            <input placeholder = " " type="text" id="phone_number" name="phone_number">
                             <label for="phone_number">Phone Number</label>
+                        </div>
+                         <div class="formfield">
+                            <input type="file" accept=".jpg,.jpeg,.png" id="profilepicture" name="profilepicture">
+                            <label for="profilepicture">Profile Picture</label>
                         </div>
                         <div class="button" role="button" id="submit" data-url="">
                             <div class="buttontext">
