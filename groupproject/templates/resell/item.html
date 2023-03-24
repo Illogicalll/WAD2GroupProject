@@ -20,6 +20,15 @@
                     <h1 class="product-name">{{ item.name }}</h1>
                     <p class="product-description">{{ item.description }}</p>
                     <p class="product-price">£{{ item.price }}</p>
+                    {% if inwishlist %}
+                        <div class="inactivebutton" id="wishlistbutton" role="button" data-url="">
+                            <p>Already in Wishlist</p>
+                        </div>
+                    {% else %}
+                        <div class="button" id="wishlistbutton" role="button" data-url="{% url 'itemaddsuccess' item.product_id %}">
+                            <p>Add to Wishlist</p>
+                        </div>
+                    {% endif %}
                     <p class="product-seller">Sold By: {{ seller.username }}</p>
                     <div class="button" id="sellerbutton" role="button" data-url="{% url 'profile' seller.user_id %}">
                         <div class="buttontext">

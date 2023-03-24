@@ -117,13 +117,6 @@ select:focus {
     border: 1px solid greenyellow;
 }
 
-.buttontext {
-    position: absolute;
-    font-size: 1.2em;
-    left: 70%;
-    top: 10%;
-}
-
 #notfound {
     position: absolute;
     top: 50%;
@@ -145,7 +138,52 @@ select:focus {
     width: 75px;
 }
 
-#purchase{
+#wishlistbutton {
+    width: 200px;
+    left: -25%;
+    margin-bottom: 10px;
+}
+
+#wishlistbutton p {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.inactivebutton {
+    position: relative;
+    background-color: black;
+    height: 40px;
+    width: 130px;
+    border-radius: 10px;
+    left: 7%;
+    pointer-events: none;
+}
+
+.inactivebutton::before {
     position: absolute;
-    left: 72.8%;
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 500ms;
+    border: 1px solid grey;
+    pointer-events: none;
+}
+
+.inactivebutton:hover::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.12), transparent 40%);
+    opacity: 1;
+    border: 1px solid grey;
+    pointer-events: none;
+}
+
+.buttontext {
+    position: absolute;
+    font-size: 1.2em;
+    left: 70%;
+    top: 10%;
 }
