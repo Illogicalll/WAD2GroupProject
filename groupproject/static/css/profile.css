@@ -12,19 +12,17 @@ body {
 .profile {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    align-items: center;
+    height: 70%;
     position: absolute;
     bottom: 55%;
     left: 47%;
     transform: translate(-50%, 50%);
     width: 100%;
-    height: 70%;
     max-width: 600px;
-    margin: auto;
     padding: 20px;
     background-color: greenyellow;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     overflow-y: scroll;
     scale: 0.85;
@@ -45,33 +43,24 @@ body {
 
 .profile p {
     font-size: 18px;
-    margin-top: 0;
+    margin-top: 10px;
     margin-bottom: 10px;
+    pointer-events: none;
 }
 
 .items {
     margin-top: 20px;
+    margin-bottom: 90px;
 }
 
 .items h2 {
     font-size: 24px;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.items ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.items li {
-    font-size: 18px;
+    margin-top: 0px;
     margin-bottom: 10px;
 }
 
 .profilebutton {
-    position: absolute;
+    position: relative;
     background-color: black;
     height: 30px;
     width: 100px;
@@ -84,12 +73,9 @@ body {
 .profilebutton::before {
     position: absolute;
     border-radius: inherit;
-    content: "";
-    height: 100%;
-    width: 100%;
     left: 0px;
     top: 0px;
-    z-index: 2;
+    z-index: 4;
     opacity: 0.1;
     transition: opacity 500ms;
     border: 1px solid black;

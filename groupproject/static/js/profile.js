@@ -25,5 +25,10 @@ function enableButtons() {
         $(this).click(function() {
             window.location.href = $(this).attr("data-url")
         });
-      });
+    });
+    $('.profilebutton').each(function() {
+        $(this).click(function() {
+            window.location.href = $(this).attr("data-url")
+        });
+    });
 }
